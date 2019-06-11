@@ -46,7 +46,7 @@
       if (iaver.eq.4) write(6,*) '  1-T '
       if (iaver.eq.5) write(6,*) '  BT '
       if (iaver.eq.6) write(6,*) '  ln(y23D) '
-      if (iaver.eq.6) write(7,*) '  ln(y23J) '
+      if (iaver.eq.7) write(7,*) '  ln(y23J) '
       if (iaver.eq.8) 
      .          write(6,*) '  ln(1-T), ln(rho), ln(C), ln(BT), ln(BW)  '
       if (iaver.eq.8) 

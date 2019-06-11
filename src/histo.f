@@ -480,7 +480,7 @@ c---- the histogram management routines
          call histow(8)
          call histowf(8,58)
       endif
-      if(iaver.eq.8)then
+      if(iaver.eq.8.or.iaver.eq.6)then
          write(*,*)
          write(*,*) ' -Ln(y23D) distribution 1/sig dsig/d(-Ln(y23D))'
          write(*,*)
