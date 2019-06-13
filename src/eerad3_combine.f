@@ -65,7 +65,7 @@
       call combinehistoL(2,fname(1:10)//'WLa',minfile,maxfile)
       call combinehistoL(2,fname(1:10)//'MLa',minfile,maxfile)
 CAV*********************************************************************
-      call combinehistoL(2,fname(1:10)//'ECa',minfile,maxfile)
+      call combinehistoL(2,fname(1:10)//'ELa',minfile,maxfile)
 CAV*********************************************************************
       call combinehistoL(3,fname(1:10)//'TLb',minfile,maxfile)
       call combinehistoL(3,fname(1:10)//'CLb',minfile,maxfile)
@@ -73,7 +73,7 @@ CAV*********************************************************************
       call combinehistoL(3,fname(1:10)//'WLb',minfile,maxfile)
       call combinehistoL(3,fname(1:10)//'MLb',minfile,maxfile)
 CAV*********************************************************************
-      call combinehistoL(3,fname(1:10)//'ECb',minfile,maxfile)
+      call combinehistoL(3,fname(1:10)//'ELb',minfile,maxfile)
 CAV*********************************************************************
       call combinehistoL(4,fname(1:10)//'TLc',minfile,maxfile)
       call combinehistoL(4,fname(1:10)//'CLc',minfile,maxfile)
@@ -81,7 +81,7 @@ CAV*********************************************************************
       call combinehistoL(4,fname(1:10)//'WLc',minfile,maxfile)
       call combinehistoL(4,fname(1:10)//'MLc',minfile,maxfile)
 CAV*********************************************************************
-      call combinehistoL(4,fname(1:10)//'ECc',minfile,maxfile)
+      call combinehistoL(4,fname(1:10)//'ELc',minfile,maxfile)
 CAV*********************************************************************
       endif
       if (iaver.eq.0.or.iaver.eq.1) then
