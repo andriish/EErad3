@@ -64,16 +64,25 @@
       call combinehistoL(2,fname(1:10)//'BLa',minfile,maxfile)
       call combinehistoL(2,fname(1:10)//'WLa',minfile,maxfile)
       call combinehistoL(2,fname(1:10)//'MLa',minfile,maxfile)
+CAV*********************************************************************
+      call combinehistoL(2,fname(1:10)//'ECa',minfile,maxfile)
+CAV*********************************************************************
       call combinehistoL(3,fname(1:10)//'TLb',minfile,maxfile)
       call combinehistoL(3,fname(1:10)//'CLb',minfile,maxfile)
       call combinehistoL(3,fname(1:10)//'BLb',minfile,maxfile)
       call combinehistoL(3,fname(1:10)//'WLb',minfile,maxfile)
       call combinehistoL(3,fname(1:10)//'MLb',minfile,maxfile)
+CAV*********************************************************************
+      call combinehistoL(3,fname(1:10)//'ECb',minfile,maxfile)
+CAV*********************************************************************
       call combinehistoL(4,fname(1:10)//'TLc',minfile,maxfile)
       call combinehistoL(4,fname(1:10)//'CLc',minfile,maxfile)
       call combinehistoL(4,fname(1:10)//'BLc',minfile,maxfile)
       call combinehistoL(4,fname(1:10)//'WLc',minfile,maxfile)
       call combinehistoL(4,fname(1:10)//'MLc',minfile,maxfile)
+CAV*********************************************************************
+      call combinehistoL(4,fname(1:10)//'ECc',minfile,maxfile)
+CAV*********************************************************************
       endif
       if (iaver.eq.0.or.iaver.eq.1) then
       call combinehisto(1,fname(1:10)//'W1a',minfile,maxfile)
@@ -125,6 +134,9 @@
       call combinehisto(4,fname(1:10)//'B1d',minfile,maxfile)
       call combinehisto(4,fname(1:10)//'B2d',minfile,maxfile)
       endif
+
+
+
 
       stop
       end

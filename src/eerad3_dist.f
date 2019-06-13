@@ -160,6 +160,10 @@
      .                       ,fextdata(1:idata))
          call combinedist('B',froot,idata,ibindata(1:idata)
      .                       ,fextdata(1:idata))
+CAV*********************************************************************
+         call combinedist('E',froot,idata,ibindata(1:idata)
+     .                       ,fextdata(1:idata))
+CAV*********************************************************************
       endif
 
       if (iaver.ge.6.and.iaver.le.8) then
