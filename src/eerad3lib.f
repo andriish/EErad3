@@ -86,6 +86,9 @@ C
       if(iaver.eq.6)ctype='.D'
       if(iaver.eq.7)ctype='.J'
       if(iaver.eq.8)ctype='.L'
+CAV*********************************************************************
+      if(iaver.eq.9)ctype='.E'
+CAV*********************************************************************
       if(ip.eq. 1)char='v5a'
       if(ip.eq. 2)char='v5b'
       gridfile = 'E'//fname(4:13)//char//ctype
@@ -406,6 +409,9 @@ C
       if(iaver.eq.6)ctype='.D'
       if(iaver.eq.7)ctype='.J'
       if(iaver.eq.8)ctype='.L'
+CAV*********************************************************************
+      if(iaver.eq.9)ctype='.E'
+CAV*********************************************************************
       if(ip.eq. 1)char='v4a'
       gridfile = 'E'//fname(4:13)//char//ctype
 
@@ -718,6 +724,9 @@ C
       if(iaver.eq.6)ctype='.D'
       if(iaver.eq.7)ctype='.J'
       if(iaver.eq.8)ctype='.L'
+CAV*********************************************************************      
+      if(iaver.eq.9)ctype='.E'
+CAV*********************************************************************
       char='v3a'
       gridfile = 'E'//fname(4:13)//char//ctype
 C
@@ -1163,7 +1172,7 @@ c      i2=8151
 *
       subroutine histoi(idhis,bmin,bmax,nbin)
       implicit double precision (a-h,o-z)
-      parameter(nhisto=100,maxbin=400)
+      parameter(nhisto=200,maxbin=400)
       common /hispar/hmin,hwidth,ibin 
       dimension hmin(nhisto),hwidth(nhisto),ibin(nhisto)
 *
@@ -1179,7 +1188,7 @@ c      i2=8151
 *
       subroutine histoa(idhis,val,wgt)
       implicit double precision (a-h,o-z)
-      parameter(nhisto=100,maxbin=400)
+      parameter(nhisto=200,maxbin=400)
       common /hispar/hmin,hwidth,ibin 
       dimension hmin(nhisto),hwidth(nhisto),ibin(nhisto)
 *
@@ -1187,8 +1196,17 @@ c      i2=8151
 *
       if(val.lt.hmin(idhis))return
       if(idhis.le.100)then 				
+CAV*********************************************************************
+        if (hwidth(idhis).ne. 0.0d0) then
+CAV*********************************************************************
         iloc=1+int((val-hmin(idhis))/hwidth(idhis))
         call ghiman(1,idhis,iloc,wgt,wgt*val)
+CAV*********************************************************************
+      else
+        continue
+C        write(*,*)'Warning: hwidth(',idhis,')=',hwidth(idhis)
+      endif
+CAV*********************************************************************      
       endif
 *
       return
@@ -1196,7 +1214,7 @@ c      i2=8151
 *
       subroutine histoe(istat,idhis)
       implicit double precision (a-h,o-z)
-      parameter(nhisto=100,maxbin=400)
+      parameter(nhisto=200,maxbin=400)
       common /hispar/hmin,hwidth,ibin 
       dimension hmin(nhisto),hwidth(nhisto),ibin(nhisto)
 *
@@ -1210,7 +1228,7 @@ c      i2=8151
 *
       subroutine histow(idhis)
       implicit double precision (a-h,o-z)
-      parameter(nhisto=100,maxbin=400)
+      parameter(nhisto=200,maxbin=400)
       common /hispar/hmin,hwidth,ibin 
       dimension hmin(nhisto),hwidth(nhisto),ibin(nhisto)
 *
@@ -1223,7 +1241,7 @@ c      i2=8151
 
       subroutine histow1(idhis)
       implicit double precision (a-h,o-z)
-      parameter(nhisto=100,maxbin=400)
+      parameter(nhisto=200,maxbin=400)
       common /hispar/hmin,hwidth,ibin 
       dimension hmin(nhisto),hwidth(nhisto),ibin(nhisto)
 *
@@ -1236,7 +1254,7 @@ c      i2=8151
 
       subroutine histowf(idhis,lun)
       implicit double precision (a-h,o-z)
-      parameter(nhisto=100,maxbin=400)
+      parameter(nhisto=200,maxbin=400)
       common /hispar/hmin,hwidth,ibin 
       dimension hmin(nhisto),hwidth(nhisto),ibin(nhisto)
 *
@@ -1279,7 +1297,7 @@ c      i2=8151
 *
       subroutine ghiman(istat,idhis,iloc,entry1,entry2)
       implicit double precision (a-h,o-z)
-      parameter(nhisto=100,maxbin=400)
+      parameter(nhisto=200,maxbin=400)
       common /runinfo/itmax1,itmax2,nshot3,nshot4,nshot5(2) 
       dimension bin(nhisto,4,maxbin),xbin(nhisto,4)
 *

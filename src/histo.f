@@ -11,15 +11,21 @@ c---- the histogram management routines
       common/intech/iaver,imom,idist,iang,idebug
       common /jetdata/y45J,y34J,y23J,y45D,y34D,y23D,y45G,y34G,y23G
       common /cuts/ycutJ,ycutD,ycutG,Bcut,Ccut,Fcut,Tcut,Scut,em2hcut
-      common /evdata/Cpar,Dpar,Spar,Apar,Planar,Tpar,
+      common /evdata/EEC(3,15),Cpar,Dpar,Spar,Apar,Planar,Tpar,
      .       Tmajor,Tminor,Opar,em2h,em2l,em2d,
      .       bmax,bmin,bsum,bdiff
       common /runinfo/itmax1,itmax2,nshot3,nshot4,nshot5(2) 
+CAV*********************************************************************
+      parameter(pi=3.141592653589793238d0)
+CAV*********************************************************************
 *
 *
 * init histograms
 *
-      nhis=100
+CAV*********************************************************************
+C      nhis=100
+      nhis=200
+CAV*********************************************************************      
       if (istat.eq.0) then
         ybinJ=0.005d0
         ybinD=0.005d0
@@ -115,6 +121,16 @@ c---- the histogram management routines
         call histoi(93,0d0,10d0,100)
         call histoi(94,0d0,10d0,50)
         call histoi(95,0d0,10d0,25)
+CAV*********************************************************************
+**** EEC
+        call histoi(96,0d0,180d0,180)
+        call histoi(97,0d0,180d0,90)
+        call histoi(98,0d0,180d0,45)
+        call histoi(99,0d0,180d0,180)
+        call histoi(100,0d0,180d0,90)
+        call histoi(101,0d0,180d0,45)
+
+CAV*********************************************************************
       endif
 *
 * write event into histogram
@@ -197,7 +213,23 @@ c---- the histogram management routines
          call histoa(88,dlb,wt)
          call histoa(89,dlb,wt)
       endif
-
+CAV*********************************************************************
+      if(y23D.gt.ycutD) then
+C      write(*,*)'--->'
+C      write(*,*)EEC
+      do i=1,15
+       eecchi=EEC(2,i)*180.0d0/pi
+       eecv=EEC(1,i)*EEC(3,i)*wt
+       
+       call histoa(96,eecchi,eecv)
+       call histoa(97,eecchi,eecv)
+       call histoa(98,eecchi,eecv)
+       call histoa(99,eecchi,eecv)
+       call histoa(100,eecchi,eecv)
+       call histoa(101,eecchi,eecv)
+      end do
+      endif
+CAV*********************************************************************      
       dly23 = 10d0
       dly34 = 10d0
       dly45 = 10d0
@@ -647,6 +679,25 @@ c---- the histogram management routines
          call histow(95)
          call histowf(95,95)
       endif
+CAV*********************************************************************
+      if(iaver.eq.8.or.iaver.eq.9)then
+         write(*,*)
+         write(*,*) ' EEC distribution'
+         write(*,*)
+         call histow(96)
+         call histowf(96,96)
+         write(*,*)
+         write(*,*) ' EEC distribution'
+         write(*,*)
+         call histow(97)
+         call histowf(97,97)
+         write(*,*)
+         write(*,*) ' EEC distribution'
+         write(*,*)
+         call histow(98)
+         call histowf(98,98)
+      endif
+CAV*********************************************************************
       endif
 *
 * event errors manipulation request, pipe through
@@ -662,7 +713,7 @@ c---- the histogram management routines
        
       subroutine outfiles
       implicit real*8(a-h,o-z)
-      character*20 fnames(1:100),fname
+      character*20 fnames(1:200),fname
       common/intech/iaver,imom,idist,iang,idebug
       common/outfile/fname
 
@@ -746,6 +797,14 @@ c---- the histogram management routines
       fnames(93) = fname(1:13)//'MLa'
       fnames(94) = fname(1:13)//'MLb'
       fnames(95) = fname(1:13)//'MLc'
+CAV*********************************************************************
+      fnames(96) = fname(1:13)//'ECa'
+      fnames(97) = fname(1:13)//'ECb'
+      fnames(98) = fname(1:13)//'ECc'
+
+
+
+CAV*********************************************************************
 
       if (iaver.eq.0.or.iaver.eq.4) then
          open(11,file=fnames(11))
@@ -832,7 +891,13 @@ c---- the histogram management routines
          open(94,file=fnames(94))
          open(95,file=fnames(95))
       endif
-
+CAV*********************************************************************
+      if (iaver.eq.8.or.iaver.eq.9) then
+         open(96,file=fnames(96))
+         open(97,file=fnames(97))
+         open(98,file=fnames(98))
+      endif
+CAV*********************************************************************
       call bino(4,0d0,0)
       do i=1,8
          close(i+10)
@@ -853,5 +918,10 @@ c---- the histogram management routines
       close(93)
       close(94)
       close(95)
+CAV*********************************************************************
+      close(96)
+      close(97)
+      close(98)            
+CAV*********************************************************************      
       return
       end

@@ -2,7 +2,7 @@ NAME1    = eerad3
 NAME2    = eerad3_combine
 NAME3    = eerad3_dist
 
-
+all: eerad3 eerad3_combine eerad3_dist
 SOURCEDIR = ./src
 OBJDIR = ./obj
 
@@ -16,7 +16,7 @@ FFILES3   = eerad3_dist.f
 
 #for gfortran compiler
 FC        = gfortran
-FFLAGS    = -fno-automatic -O
+FFLAGS    = -g -fno-automatic -O  -finit-real=zero -ffpe-trap=invalid,zero,overflow,underflow
 #for ifort compiler
 #FC        = ifort
 #FFLAGS    = -save -O4

@@ -8,7 +8,7 @@ c--- optimization of integration for a particular distribution (used only for mo
       implicit real*8(a-h,o-z)
       common /jetdata/y45J,y34J,y23J,y45D,y34D,y23D,y45G,y34G,y23G
       common /cuts/ycutJ,ycutD,ycutG,Bcut,Ccut,Fcut,Tcut,Scut,em2hcut
-      common /evdata/Cpar,Dpar,Spar,Apar,Planar,Tpar,
+      common /evdata/EEC(3,15),Cpar,Dpar,Spar,Apar,Planar,Tpar,
      .       Tmajor,Tminor,Opar,em2h,em2l,em2d,
      .       bmax,bmin,bsum,bdiff
       common/intech/iaver,imom,idist,iang,idebug
@@ -56,6 +56,10 @@ c--- optimization of integration for a particular distribution (used only for mo
         write(*,*)' ***** WARNING ******'
         write(*,*)' Subroutine DISTRIB optimised for',
      . ' y23D (unweighted) '
+      elseif(iaver.eq.9)then
+        write(*,*)' ***** WARNING ******'
+        write(*,*)' Subroutine DISTRIB optimised for',
+     . ' EEC (unweighted) '
       endif
         init=1
       endif
@@ -77,7 +81,7 @@ c--- application of all event selection cuts
       common /tcuts/ymin,y0 
       common /cuts/ycutJ,ycutD,ycutG,Bcut,Ccut,Fcut,Tcut,Scut,em2hcut
       common /jetdata/y45J,y34J,y23J,y45D,y34D,y23D,y45G,y34G,y23G
-      common /evdata/Cpar,Dpar,Spar,Apar,Planar,Tpar,
+      common /evdata/EEC(3,15),Cpar,Dpar,Spar,Apar,Planar,Tpar,
      .       Tmajor,Tminor,Opar,em2h,em2l,em2d,
      .       bmax,bmin,bsum,bdiff
       common/intech/iaver,imom,idist,iang,idebug
@@ -89,6 +93,9 @@ c--- application of all event selection cuts
       call getSAP(Spar,Apar,Planar,npar)
       call getT(Tpar,Tmajor,Tminor,Opar,em2h,em2l,em2d,
      .       bmax,bmin,bsum,bdiff,npar)
+CAV********************************************************************* 
+      call geteec(eec,npar)
+CAV********************************************************************* 
       call getvar(var)
 	
       if(iaver.eq.0)then
@@ -121,8 +128,12 @@ c--- application of all event selection cuts
         if(Bsum.gt.Bcut)ipass=1
         if(Cpar.gt.Ccut)ipass=1
         if(Tmajor.gt.Fcut)ipass=1
-	if(1d0-Tpar.gt.Tcut)ipass=1
+        if(1d0-Tpar.gt.Tcut)ipass=1
         if(em2h.gt.em2hcut)ipass=1
+CAV********************************************************************* 
+      elseif(iaver.eq.9)then
+        if(y23D.gt.ycutD)ipass=1
+CAV********************************************************************* 
       endif
       return
       end
@@ -134,7 +145,7 @@ c---- provide event shape variable for inclusive cross section
       implicit real*8 (a-h,o-z)
       common /jetdata/y45J,y34J,y23J,y45D,y34D,y23D,y45G,y34G,y23G
       common /cuts/ycutJ,ycutD,ycutG,Bcut,Ccut,Fcut,Tcut,Scut,em2hcut
-      common /evdata/Cpar,Dpar,Spar,Apar,Planar,Tpar,
+      common /evdata/EEC(3,15),Cpar,Dpar,Spar,Apar,Planar,Tpar,
      .       Tmajor,Tminor,Opar,em2h,em2l,em2d,
      .       bmax,bmin,bsum,bdiff
       common/intech/iaver,imom,idist,iang,idebug
@@ -160,6 +171,51 @@ c---- provide event shape variable for inclusive cross section
       var = var**imom
       return
       end
+CAV*********************************************************************  
+      subroutine geteec(eec,npar)
+c---- determine jet transition parameters
+      implicit real*8(a-h,o-z)
+      common /pcut/ppar(4,5) 
+      dimension EEC(3,15)
+      dimension pjet(4,5)
+      evis=0d0
+      do i=1,npar
+      do j=1,4
+        pjet(j,i)=ppar(j,i)
+      enddo
+      evis=evis+pjet(4,i)
+      enddo
+      do i=1,15
+      EEC(1,i)=0d0
+      EEC(2,i)=0d0
+      EEC(3,i)=0d0
+      enddo
+      k=1
+      do i=1,npar
+        ppi=dsqrt(pjet(1,i)**2+pjet(2,i)**2+pjet(3,i)**2)
+        do j=i,npar
+          ppj=dsqrt(pjet(1,j)**2+pjet(2,j)**2+pjet(3,j)**2)
+        if(pjet(4,i).gt.0d0.and.pjet(4,j).gt.0d0.and.ppj*ppi.gt.0d0)then
+          EEC(3,k)=(pjet(1,i)*pjet(1,j)+pjet(2,i)*pjet(2,j)
+     ++pjet(3,i)*pjet(3,j))/(ppj*ppi)
+          if (EEC(3,k).lt.-1.0d0) then 
+          if (EEC(3,k).lt.-1.000001d0) write(*,*)EEC(3,k)
+          EEC(3,k)=-1.0d0
+          end if
+          if (EEC(3,k).gt.1.0d0) then 
+          if (EEC(3,k).gt.1.000001d0) write(*,*)EEC(3,k)
+          EEC(3,k)=1.0d0
+          end if
+          EEC(1,k)=pjet(4,i)*pjet(4,j)
+          EEC(2,k)=dacos(EEC(3,k))
+          end if
+          k=k+1
+      end do
+      end do
+
+      return 
+      end
+CAV*********************************************************************  
 *
 ************************************************************************
 *

@@ -5,6 +5,8 @@
 
       call readinit
       call writer
+      avgi=0d0
+      sd=0d0
       call cross(avgi,sd)
       if(nloop.eq.0)then
         write(*,11)avgi,sd 
@@ -201,6 +203,11 @@
          Scut=ycutD
          em2hcut=ycutD
       endif
+CAV*********************************************************************  
+      if (iaver.eq.9) then
+         ycutD=dexp(-10d0) 
+      endif
+CAV*********************************************************************  
 
       ome=0d0
       if(iaver.eq.2)Ccut=cutvar
@@ -405,6 +412,11 @@ c      write(*,10)star,short,Fcut,sblank2,star
       write(*,10)star,short,em2hcut,sblank2,star    
       short='   ycut in Durham scheme' 
       write(*,10)star,short,ycutD,sblank2,star    
+CAV*********************************************************************  
+      elseif(iaver.eq.9)then
+      short='   ycut in Durham scheme for EEC' 
+      write(*,10)star,short,ycutD,sblank2,star    
+CAV*********************************************************************  
       endif   
       write(*,*)star,sno,star
       write(*,*)star,starline,star
@@ -445,6 +457,12 @@ c      write(*,10)star,short,Fcut,sblank2,star
       slong='   ln(y23), ln(y34),ln(y45), R_3, R_4, R_5 '
       write(*,*)star,slong,star
       endif
+CAV*********************************************************************      
+      if (iaver.eq.9) then
+      slong='   EEC  '
+      write(*,*)star,slong,star
+      endif
+CAV*********************************************************************
       if (iaver.eq.1.or.iaver.eq.2.or.iaver.eq.3.or.
      .    iaver.eq.4.or.iaver.eq.5.or.iaver.eq.6) then
       short=' Compute moment: '
