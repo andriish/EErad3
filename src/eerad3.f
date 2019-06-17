@@ -194,6 +194,9 @@
 **** the default cuts for the jet run
       if (iaver.eq.8) then
          ycutD=dexp(-10d0) 
+CAV*********************************************************************  
+         ycutD=dexp(-17d0) 
+CAV*********************************************************************  
          Bcut=ycutD
          BWcut=Bcut
          BTcut=Bcut

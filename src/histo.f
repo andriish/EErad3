@@ -219,7 +219,7 @@ C      write(*,*)'--->'
 C      write(*,*)EEC
       do i=1,15
        eecchi=EEC(2,i)*180.0d0/pi
-       eecv=EEC(1,i)*EEC(3,i)*wt
+       eecv=EEC(1,i)*wt
        
        call histoa(96,eecchi,eecv)
        call histoa(97,eecchi,eecv)

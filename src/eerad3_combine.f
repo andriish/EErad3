@@ -65,7 +65,7 @@
       call combinehistoL(2,fname(1:10)//'WLa',minfile,maxfile)
       call combinehistoL(2,fname(1:10)//'MLa',minfile,maxfile)
 CAV*********************************************************************
-      call combinehistoL(2,fname(1:10)//'ELa',minfile,maxfile)
+      call combinehistoL(12,fname(1:10)//'ELa',minfile,maxfile)
 CAV*********************************************************************
       call combinehistoL(3,fname(1:10)//'TLb',minfile,maxfile)
       call combinehistoL(3,fname(1:10)//'CLb',minfile,maxfile)
@@ -73,7 +73,7 @@ CAV*********************************************************************
       call combinehistoL(3,fname(1:10)//'WLb',minfile,maxfile)
       call combinehistoL(3,fname(1:10)//'MLb',minfile,maxfile)
 CAV*********************************************************************
-      call combinehistoL(3,fname(1:10)//'ELb',minfile,maxfile)
+      call combinehistoL(13,fname(1:10)//'ELb',minfile,maxfile)
 CAV*********************************************************************
       call combinehistoL(4,fname(1:10)//'TLc',minfile,maxfile)
       call combinehistoL(4,fname(1:10)//'CLc',minfile,maxfile)
@@ -81,7 +81,7 @@ CAV*********************************************************************
       call combinehistoL(4,fname(1:10)//'WLc',minfile,maxfile)
       call combinehistoL(4,fname(1:10)//'MLc',minfile,maxfile)
 CAV*********************************************************************
-      call combinehistoL(4,fname(1:10)//'ELc',minfile,maxfile)
+      call combinehistoL(14,fname(1:10)//'ELc',minfile,maxfile)
 CAV*********************************************************************
       endif
       if (iaver.eq.0.or.iaver.eq.1) then
@@ -168,7 +168,59 @@ CAV*********************************************************************
      .         ,ei4(minfile:maxfile,1:nbins4)
      .         ,wi4(minfile:maxfile,1:nbins4)
      .         ,di4(minfile:maxfile,1:nbins4)
+CAV*********************************************************************
+      parameter (nbins0EC=720,nbins1EC=360,nbins2EC=180,nbins3EC=90,
+     .nbins4EC=45)
+      dimension t0EC(1:nbins0EC),t1EC(1:nbins1EC),t2EC(1:nbins2EC),
+     .          t3EC(1:nbins3EC),t4EC(1:nbins4EC)
+      dimension yi0EC(minfile:maxfile,1:nbins0EC)
+     .         ,ei0EC(minfile:maxfile,1:nbins0EC)
+     .         ,wi0EC(minfile:maxfile,1:nbins0EC)
+     .         ,di0EC(minfile:maxfile,1:nbins0EC)
+      dimension yi1EC(minfile:maxfile,1:nbins1EC)
+     .         ,ei1EC(minfile:maxfile,1:nbins1EC)
+     .         ,wi1EC(minfile:maxfile,1:nbins1EC)
+     .         ,di1EC(minfile:maxfile,1:nbins1EC)
+      dimension yi2EC(minfile:maxfile,1:nbins2EC)
+     .         ,ei2EC(minfile:maxfile,1:nbins2EC)
+     .         ,wi2EC(minfile:maxfile,1:nbins2EC)
+     .         ,di2EC(minfile:maxfile,1:nbins2EC)
+      dimension yi3EC(minfile:maxfile,1:nbins3EC)
+     .         ,ei3EC(minfile:maxfile,1:nbins3EC)
+     .         ,wi3EC(minfile:maxfile,1:nbins3EC)
+     .         ,di3EC(minfile:maxfile,1:nbins3EC)
+      dimension yi4EC(minfile:maxfile,1:nbins4EC)
+     .         ,ei4EC(minfile:maxfile,1:nbins4EC)
+     .         ,wi4EC(minfile:maxfile,1:nbins4EC)
+     .         ,di4EC(minfile:maxfile,1:nbins4EC)
+      if (inum.eq.10) then
+      call loadhisto(nbins0EC,yi0EC,ei0EC,wi0EC,di0EC,t0EC,fname(1:13)
+     .               ,minfile,maxfile)
+      call writehisto(nbins0EC,yi0EC,ei0EC,wi0EC,di0EC,t0EC,fname(1:13)
+     .               ,minfile,maxfile)
+      elseif (inum.eq.11) then
+      call loadhisto(nbins1EC,yi1EC,ei1EC,wi1EC,di1EC,t1EC,fname(1:13)
+     .               ,minfile,maxfile)
+      call writehisto(nbins1EC,yi1EC,ei1EC,wi1EC,di1EC,t1EC,fname(1:13)
+     .               ,minfile,maxfile)
+      elseif (inum.eq.12) then
+      call loadhisto(nbins2EC,yi2EC,ei2EC,wi2EC,di2EC,t2EC,fname(1:13)
+     .               ,minfile,maxfile)
+      call writehisto(nbins2EC,yi2EC,ei2EC,wi2EC,di2EC,t2EC,fname(1:13)
+     .               ,minfile,maxfile)
+      elseif (inum.eq.13) then
+      call loadhisto(nbins3EC,yi3EC,ei3EC,wi3EC,di3EC,t3EC,fname(1:13)
+     .               ,minfile,maxfile)
+      call writehisto(nbins3EC,yi3EC,ei3EC,wi3EC,di3EC,t3EC,fname(1:13)
+     .               ,minfile,maxfile)
+      elseif (inum.eq.14) then
+      call loadhisto(nbins4EC,yi4EC,ei4EC,wi4EC,di4EC,t4EC,fname(1:13)
+     .               ,minfile,maxfile)
+      call writehisto(nbins4EC,yi4EC,ei4EC,wi4EC,di4EC,t4EC,fname(1:13)
+     .               ,minfile,maxfile)
+      endif
 
+CAV*********************************************************************
       if (inum.eq.0) then
       call loadhisto(nbins0,yi0,ei0,wi0,di0,t0,fname(1:13)
      .               ,minfile,maxfile)

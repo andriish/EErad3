@@ -5,6 +5,9 @@
       character*40 ifile
       character*12 froot(11)
       dimension ibindata(10),ibindata2(10),ibindataC(10)
+CAV*********************************************************************      
+      dimension ibindataEEC(10)
+CAV*********************************************************************      
       character*2 fextdata(10),fextdata2(10)
       common/qcdpar/rmuarr(-10:10),dlarr(-10:10),alsarr(-10:10,1:3)
 
@@ -87,6 +90,11 @@
          ibindata(1)= 100
          ibindata(2)= 50
          ibindata(3)= 25
+CAV*********************************************************************
+         ibindataEEC(1)= 180
+         ibindataEEC(2)= 90
+         ibindataEEC(3)= 45
+CAV*********************************************************************         
          fextdata(1) = 'La'
          fextdata(2) = 'Lb'
          fextdata(3) = 'Lc'
@@ -161,7 +169,7 @@
          call combinedist('B',froot,idata,ibindata(1:idata)
      .                       ,fextdata(1:idata))
 CAV*********************************************************************
-         call combinedist('E',froot,idata,ibindata(1:idata)
+         call combinedist('E',froot,idata,ibindataEEC(1:idata)
      .                       ,fextdata(1:idata))
 CAV*********************************************************************
       endif

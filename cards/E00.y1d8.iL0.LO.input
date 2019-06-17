@@ -1,6 +1,6 @@
-1d-8      ! y0
+1d-12      ! y0
 8         ! iaver
-1d-5      ! cutvar
+1d-10      ! cutvar
 1         ! imom
 1         ! iang
 0         ! nloop
@@ -8,4 +8,4 @@
 L         ! ichar
 1 1       ! iwarm iprod
 5 5       ! itmax1 itmax2
-500000 3000 2000    ! nshot3 nshot4 nshot5
+1000000 600 4000 ! nshot3 nshot4 nshot5, original is   5000 30000 200000
