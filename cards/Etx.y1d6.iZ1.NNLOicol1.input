@@ -3,9 +3,9 @@
 1d-5      ! cutvar
 1         ! imom
 1         ! iang
-2         ! nloop
+-2         ! nloop
 1         ! icol
 Z         ! ichar
 1 1       ! iwarm iprod
 5 5       ! itmax1 itmax2
-1000 6000 40000 ! nshot3 nshot4 nshot5, original is   5000 30000 200000
+100 600 4000 ! nshot3 nshot4 nshot5, original is   5000 30000 200000

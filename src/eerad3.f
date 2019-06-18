@@ -398,7 +398,7 @@ c      write(*,10)star,short,Scut,sblank2,star
       short='   ycut in  Jade scheme ' 
       write(*,10)star,short,ycutJ,sblank2,star    
       elseif(iaver.eq.8)then
-      slong='   weighted by y23J     ' 
+      slong='   weighted by y23D     ' 
       write(*,*)star,slong,star
       slong = ' cuts applied : '
       write(*,*)star,slong,star

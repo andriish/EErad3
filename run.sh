@@ -7,15 +7,17 @@ cd calc
 for a in $(ls -1 ../cards/E0*input); do
 :
 b=$(basename $a)
-#../eerad3 -i $a -n 0 &> ../log/$b'_0.log' & 
-../eerad3 -i $a -n 1 &> ../log/$b'_1.log' & 
+../eerad3 -i $a -n 0 &> ../log/$b'_0.log' & 
+#../eerad3 -i $a -n 1 &> ../log/$b'_1.log' & 
 done
 
 #wait
-exit
+#exit
 
 #!/bin/bash
-for a in $(ls -1 ../cards/Et*input); do
+for a in $(ls -1 ../cards/Et*input | grep '\.NLO'); do
+#for a in $(ls -1 ../cards/Et*input | grep '\.NNLO'); do
+#for a in $(ls -1 ../cards/Et*input ); do
 :
 b=$(basename $a)
 ../eerad3 -i $a -n 1 &> ../log/$b'_1.log' &
