@@ -39,7 +39,7 @@ b=$(basename $a)
 done
 
 #for a in $(ls -1 ../cards/Et*input | grep '\.NNLO'| grep QQQQ); do
-for a in $(ls -1 ../cards/Et*input | grep '\.NNLO'); do
+for a in $(ls -1 ../cards/Et*input | grep '\.NNLO' | grep Z2); do
 :
 b=$(basename $a)
 ../eerad3 -i $a -n 1 &> ../log/$b'_1.log' &

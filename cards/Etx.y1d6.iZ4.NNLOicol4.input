@@ -8,4 +8,4 @@
 Z         ! ichar
 1 1       ! iwarm iprod
 5 5       ! itmax1 itmax2
-1000 5000 5000 ! nshot3 nshot4 nshot5, original is   5000 30000 200000
+100 500 2500 ! nshot3 nshot4 nshot5, original is   5000 30000 200000

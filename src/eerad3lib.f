@@ -1360,10 +1360,10 @@ CAV*********************************************************************
          do i=1,iloc
             y=bin(idhis,3,i)/itmax2 
             y2=bin(idhis,2,i)
-	    sum=sum+y
-	    sum2=sum2+y2**2
+            sum=sum+y
+            sum2=sum2+y2**2
             nn=bin(idhis,4,i)
-            if(idhis.le.100)then		
+            if(idhis.le.200)then		
               x=entry1+entry2*(dfloat(i)-.5d0)
 C            write(6,101) x,y/entry2,y2/entry2 
 CAV********************************************************************* 
@@ -1393,7 +1393,7 @@ CAV*********************************************************************
 	    sum=sum+y
 	    sum2=sum2+y2**2
             nn=bin(idhis,4,i)
-            if(idhis.le.100)then			
+            if(idhis.le.200)then			
               x=entry1+entry2*(dfloat(i)-.5d0)
             write(istat,101) x,y/entry2,y2/entry2 
             endif
