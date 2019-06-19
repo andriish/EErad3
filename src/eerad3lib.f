@@ -1365,10 +1365,20 @@ CAV*********************************************************************
             nn=bin(idhis,4,i)
             if(idhis.le.100)then		
               x=entry1+entry2*(dfloat(i)-.5d0)
+C            write(6,101) x,y/entry2,y2/entry2 
+CAV********************************************************************* 
+            if (entry2.ne.0d0) then
             write(6,101) x,y/entry2,y2/entry2 
+CAV********************************************************************* 
+            else
+            write(6,101) x,0.0,0.0
+            endif
             endif
          enddo
-         write(6,102)sum,sqrt(sum2)
+CAV********************************************************************* 
+C         write(6,102)sum,sqrt(sum2)
+         write(6,102)sum,sqrt(abs(sum2))
+CAV********************************************************************* 
          write(6,103)xbin(idhis,3)/itmax2,xbin(idhis,2)
       endif
  101     format(3x,f11.6,1pe12.4,1pe12.4)
