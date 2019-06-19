@@ -193,7 +193,9 @@ c---- determine jet transition parameters
       k=1
       do i=1,npar
         ppi=dsqrt(pjet(1,i)**2+pjet(2,i)**2+pjet(3,i)**2)
-        do j=i,npar
+C HERE IS THE DIFFERENCE self corr or no self corr.
+        do j=i+1,npar
+C        do j=i,npar
           ppj=dsqrt(pjet(1,j)**2+pjet(2,j)**2+pjet(3,j)**2)
         if(pjet(4,i).gt.0d0.and.pjet(4,j).gt.0d0.and.ppj*ppi.gt.0d0)then
           EEC(3,k)=(pjet(1,i)*pjet(1,j)+pjet(2,i)*pjet(2,j)

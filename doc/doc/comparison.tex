@@ -26,7 +26,7 @@
 \pgfplotsset{try min ticks=5}
 \begin{axis}[ylabel=$1/\sigma_{t}{\rm d}\Sigma/{\rm d}\chi$,
     ymode=log, 
-    xmin=-1,xmax=181,
+    xmin=-2,xmax=182,
     ymin=0.00045,ymax=450.0,
     grid=none,
     grid style={line width=.1pt, draw=gray!10},
@@ -48,7 +48,7 @@
         legend style={legend pos=north west,font={\bf\large},cells={align=left}},
         width=1.0\textwidth,
         height=0.7\textheight,
-        yshift=0.3\textheight
+        yshift=0.32\textheight
     ]
 \addplot[color=black,mark=o,only marks, mark size=1.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={\thisrowno{1}}, col sep=space]{../processed/colorful/ALL.dat};
 \addlegendentry{ColorFUL, LO}
@@ -78,8 +78,8 @@
 %\addplot[color=red,mark=+,only marks, mark size=1.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={0.83*2.0*1.0*\thisrowno{1}},  y error index=2, col sep=space]{../processed/eerad3/LOl.dat};
 %\addlegendentry{EERAD3, LOl}
 \end{axis}
-\begin{axis}[ylabel={$\frac{ColorFUL}{EERAD3}$, LO},restrict y to domain=-10:10,
-    xmin=-1,xmax=181,
+\begin{axis}[ylabel={$\frac{ColorFUL}{EERAD3}$, LO},restrict y to domain=-100:100,
+    xmin=-2,xmax=182,
     ymin=0.95,ymax=1.05,
     grid=none,
     grid style={line width=.1pt, draw=gray!10},
@@ -96,18 +96,45 @@
         extra tick style={grid=major},
         legend style={legend pos=north east,font={\bf\tiny}},
             width=1.0\textwidth,
-        height=0.2\textheight,
-        yshift=0.15\textheight
+        height=0.16\textheight,
+        yshift=0.22\textheight
     ]        
        \node[draw=none,anchor=west] (source) at (axis cs:0.0,1.0){};
        \node[draw=none](destination) at (axis cs:180,1.0){};
        \draw[thick,-](source)--(destination);
-        \addplot[mark=none, color=red,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index =0, y expr=(2.0/180.0*\thisrowno{1} / \thisrowno{6} ), col sep=space ]{../processed/BOTH.dat};
+        \addplot[mark=o, mark size=0.25pt, color=black,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index =0, y expr=(2.0/180.0*\thisrowno{1} / \thisrowno{6} ), col sep=space ]{../processed/BOTH.dat};
         %\addplot[mark=none, color=blue,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index =0, y expr={\thisrowno{1}/\thisrowno{6}}, y error expr={\thisrowno{7}/\thisrowno{6}}, col sep=space ]{../../share/#2/fits/fit_0504011001.dat};
 \end{axis}
-\begin{axis}[ylabel={$\frac{ColorFUL}{EERAD3}$, NLO},xlabel=$\chi\degree$,restrict y to domain=-10:10,
-    xmin=-1,xmax=181,
+\begin{axis}[ylabel={$\frac{ColorFUL}{EERAD3}$, NLO},restrict y to domain=-100:100,
+    xmin=-2,xmax=182,
     ymin=0.9,ymax=1.1,
+    grid=none,
+    grid style={line width=.1pt, draw=gray!10},
+    major grid style={line width=.3pt,draw=gray!80},
+    minor tick num=5,
+           xticklabel=\empty,
+    enlargelimits={abs=0.01},    
+    ticklabel style={font=\small,fill=none},
+    xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=0, /pgf/number format/fixed zerofill} ,
+    yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3, /pgf/number format/fixed zerofill} ,
+        xlabel style={at={(ticklabel* cs:1)},anchor=north west, xshift=-0.5cm, yshift=-0.3cm, font=\large},
+    ylabel style={at={(ticklabel* cs:1)},anchor=south east, xshift=0.0cm, yshift=0.5cm, font=\small},
+    legend style={draw=none},
+        extra tick style={grid=major},
+        legend style={legend pos=north east,font={\bf\tiny}},
+            width=1.0\textwidth,
+        height=0.16\textheight,
+        yshift=0.11\textheight
+    ]        
+       \node[draw=none,anchor=west] (source) at (axis cs:0.0,1.0){};
+       \node[draw=none](destination) at (axis cs:180,1.0){};
+       \draw[thick,-](source)--(destination);
+        \addplot[mark=o, mark size=0.25pt, color=blue,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index =0, y expr=(2.0/180.0*\thisrowno{2} / \thisrowno{7} ), col sep=space ]{../processed/BOTH.dat};
+        %\addplot[mark=none, color=blue,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index =0, y expr={\thisrowno{1}/\thisrowno{6}}, y error expr={\thisrowno{7}/\thisrowno{6}}, col sep=space ]{../../share/#2/fits/fit_0504011001.dat};
+\end{axis}
+\begin{axis}[ylabel={$\frac{ColorFUL}{EERAD3}$, NNLO},xlabel=$\chi\degree$,restrict y to domain=-10:10,
+    xmin=-2,xmax=182,
+    ymin=0.25,ymax=1.75,
     grid=none,
     grid style={line width=.1pt, draw=gray!10},
     major grid style={line width=.3pt,draw=gray!80},
@@ -122,13 +149,13 @@
         extra tick style={grid=major},
         legend style={legend pos=north east,font={\bf\tiny}},
             width=1.0\textwidth,
-        height=0.2\textheight,
+        height=0.16\textheight,
         yshift=0.0\textheight
     ]        
        \node[draw=none,anchor=west] (source) at (axis cs:0.0,1.0){};
        \node[draw=none](destination) at (axis cs:180,1.0){};
        \draw[thick,-](source)--(destination);
-        \addplot[mark=none, color=blue,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index =0, y expr=(2.0/180.0*\thisrowno{2} / \thisrowno{7} ), col sep=space ]{../processed/BOTH.dat};
+        \addplot[mark=o, mark size=0.25pt, color=red,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index =0, y expr=(2.0/180.0*\thisrowno{3} / \thisrowno{8} ), col sep=space ]{../processed/BOTH.dat};
         %\addplot[mark=none, color=blue,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index =0, y expr={\thisrowno{1}/\thisrowno{6}}, y error expr={\thisrowno{7}/\thisrowno{6}}, col sep=space ]{../../share/#2/fits/fit_0504011001.dat};
 \end{axis}
 \end{tikzpicture}
