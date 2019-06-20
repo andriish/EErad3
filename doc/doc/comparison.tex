@@ -50,6 +50,12 @@
         height=0.7\textheight,
         yshift=0.32\textheight
     ]
+\addplot[color=black,mark=none, mark size=1.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={\thisrowno{1}}, col sep=space]{../predictions/analytic/LO.dat};
+\addlegendentry{Analytic, LO}
+\addplot[color=blue,mark=none, mark size=1.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={\thisrowno{1}}, col sep=space]{../predictions/analytic/NLO.dat};
+\addlegendentry{Analytic, NLO}
+
+
 \addplot[color=black,mark=o,only marks, mark size=1.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={\thisrowno{1}}, col sep=space]{../processed/colorful/ALL.dat};
 \addlegendentry{ColorFUL, LO}
 \addplot[color=blue,mark=o,only marks, mark size=1.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={\thisrowno{2}}, col sep=space]{../processed/colorful/ALL.dat};

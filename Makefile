@@ -1,8 +1,9 @@
 NAME1    = eerad3
 NAME2    = eerad3_combine
 NAME3    = eerad3_dist
+NAME4    = eecanalytic
 
-all: eerad3 eerad3_combine eerad3_dist
+all: eerad3 eerad3_combine eerad3_dist eecanalytic
 SOURCEDIR = ./src
 OBJDIR = ./obj
 
@@ -12,6 +13,7 @@ VPATH = $(SOURCEDIR)
 FFILES1   = eerad3.f histo.f ecuts.f eerad3lib.f phaseee.f sig.f aversub0.f aversub1.f aversub2.f virt.f brem.f 3jme.f tdhpl.f hplog.f
 FFILES2   = eerad3_combine.f
 FFILES3   = eerad3_dist.f
+FFILES4   = eecanalytic.f  basisexp.f  basisfct.f
 
 
 #for gfortran compiler
@@ -25,6 +27,7 @@ FFLAGS    = -g -fno-automatic -O  -finit-real=zero -ffpe-trap=invalid,zero,overf
 OBJFILES1 = $(addprefix $(OBJDIR)/,$(patsubst %.f,%.o,$(FFILES1)))
 OBJFILES2 = $(addprefix $(OBJDIR)/,$(patsubst %.f,%.o,$(FFILES2)))
 OBJFILES3 = $(addprefix $(OBJDIR)/,$(patsubst %.f,%.o,$(FFILES3)))
+OBJFILES4 = $(addprefix $(OBJDIR)/,$(patsubst %.f,%.o,$(FFILES4)))
 
 $(OBJDIR)/%.o:	%.f
 	$(FC) $(FFLAGS) -c $< -o $@
@@ -35,8 +38,10 @@ $(NAME2): $(OBJFILES2)
 	$(FC) $(FFLAGS) -o $@ $(OBJFILES2)
 $(NAME3): $(OBJFILES3)
 	$(FC) $(FFLAGS) -o $@ $(OBJFILES3)
+$(NAME4): $(OBJFILES4)
+	$(FC) $(FFLAGS) -o $@ $(OBJFILES4)
 
 clean:
-	rm -f obj/* eerad3 eerad3_dist eerad3_combine
+	rm -f obj/* eerad3 eerad3_dist eerad3_combine eecanalytic
 
 

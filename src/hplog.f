@@ -25,7 +25,7 @@
 ** Hr1,Hr2,Hr3,Hr4 are the double precision real parts of 
 **    Hc1,Hc2,Hc3,Hc4; 
 ** Hi1,Hi2,Hi3,Hi4 are the double precision immaginary parts of 
-**    Hc1,Hc2,Hc3,Hc4 divided by pi=3.114159.... 
+**    Hc1,Hc2,Hc3,Hc4 divided by pi=3.14159.... 
 ** n1,n2 is the required range of indices, the allowed ranges are 
 **    (0,1), (-1,0), (-1,1) ; 
 ****** 
