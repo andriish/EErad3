@@ -32,7 +32,7 @@ cat ../calc/outxxxxxxxxx.xNNLO.ELa | tr -s ' '| cut -f 2,5,6 -d' ' > processed/e
 cat ../calc/outxxxxxxxxx.xNNLO.ELa | tr -s ' '| cut -f 2,3,4,5,6 -d' ' >processed/eerad3/ALL.dat
 
 
-paste -d ' '  processed/colorful/ALL.dat processed/eerad3/ALL.dat > processed/BOTH.dat
+paste -d ' '  processed/colorful/ALL.dat processed/eerad3/ALL.dat predictions/analytic/LO.dat predictions/analytic/NLO.dat > processed/BOTH.dat
 
 export PATH=/afs/cern.ch/sw/XML/texlive/latest/bin/x86_64-linux/:$PATH
 cd doc

@@ -1195,7 +1195,7 @@ c      i2=8151
 * histogram entry
 *
       if(val.lt.hmin(idhis))return
-      if(idhis.le.100)then 				
+      if(idhis.le.200)then 				
 CAV*********************************************************************
         if (hwidth(idhis).ne. 0.0d0) then
 CAV*********************************************************************
@@ -1362,7 +1362,7 @@ CAV*********************************************************************
             y2=bin(idhis,2,i)
             sum=sum+y
             sum2=sum2+y2**2
-            nn=bin(idhis,4,i)
+CAV overflow           nn=bin(idhis,4,i)
             if(idhis.le.200)then		
               x=entry1+entry2*(dfloat(i)-.5d0)
 C            write(6,101) x,y/entry2,y2/entry2 
@@ -1374,6 +1374,7 @@ CAV*********************************************************************
             write(6,101) x,0.0,0.0
             endif
             endif
+
          enddo
 CAV********************************************************************* 
 C         write(6,102)sum,sqrt(sum2)
@@ -1392,7 +1393,7 @@ CAV*********************************************************************
             y2=bin(idhis,2,i)
 	    sum=sum+y
 	    sum2=sum2+y2**2
-            nn=bin(idhis,4,i)
+CAV  overflow           nn=bin(idhis,4,i)
             if(idhis.le.200)then			
               x=entry1+entry2*(dfloat(i)-.5d0)
             write(istat,101) x,y/entry2,y2/entry2 
@@ -1409,7 +1410,7 @@ c         write(11,103)xbin(idhis,3)/itmax2,xbin(idhis,2)
             y2=bin(idhis,2,i)
 	    sum=sum+y
 	    sum2=sum2+y2**2
-            nn=bin(idhis,4,i)
+CAV  overflow           nn=bin(idhis,4,i)
             x=entry1+entry2*(dfloat(i)-1d0)
             write(6,101) x,y/entry2,y2/entry2 
          enddo
