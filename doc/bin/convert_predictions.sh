@@ -1,4 +1,8 @@
 #!/bin/bash
+
+#paste -d ' '  processed/colorful/ALL.dat processed/eerad3/ALL.dat predictions/analytic/LO.dat predictions/analytic/NLO.dat > processed/BOTH.dat
+
+
 mkdir -p processed/colorful/
 BINING=OPAL3
 epem1=predictions/ee3jet--LO.yoda

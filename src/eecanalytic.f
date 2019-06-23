@@ -77,7 +77,7 @@ CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
       z2=(1.0q0-cos(th2/180.0q0*pi))/2.0q0
       dz=(Z2-z1)/(1.0q0*N+1.0q0)  
         sum=0.0q0
-        do i=1,50
+        do i=1,N
         z=z1+dz*i
         sum=sum+B(z)/2.0q0*pi*sqrt(z*(1.0q0-z))
         enddo
