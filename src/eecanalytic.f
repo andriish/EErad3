@@ -45,6 +45,8 @@
       write(*,*) 'Bnlc', BNlc(0.5q0)
       write(*,*) 'Blc', Blc(0.5q0)
       write(*,*)pi**2/6.0q0
+      write(*,*)'TOTAL INTEGRAL NUMERIC vs ANALYTIC'
+      write(*,*)GETLO(0.0q0,180.0q0,20000000),16.0q0*pi*pi/35.0q0
       END
 
 CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
