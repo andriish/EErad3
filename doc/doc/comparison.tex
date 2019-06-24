@@ -56,14 +56,14 @@
 \addlegendentry{Analytic, NLO}
 
 
-\addplot[color=black,mark=o,only marks, mark size=1.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={1.025*\thisrowno{1}}, col sep=space]{../processed/colorful/ALL.dat};
-\addlegendentry{ColorFUL$\times1.025$, LO}
-\addplot[color=blue,mark=o,only marks, mark size=1.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={1.025*\thisrowno{2}}, col sep=space]{../processed/colorful/ALL.dat};
-\addlegendentry{ColorFUL$\times1.025$, NLO}
+\addplot[color=black,mark=o,only marks, mark size=1.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={1.0253894*\thisrowno{1}}, col sep=space]{../processed/colorful/ALL.dat};
+\addlegendentry{ColorFUL, LO}
+\addplot[color=blue,mark=o,only marks, mark size=1.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={1.0253894*\thisrowno{2}}, col sep=space]{../processed/colorful/ALL.dat};
+\addlegendentry{ColorFUL, NLO}
 %\addplot[color=green,mark=*,only marks, mark size=1.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y index=3,  y error index=4, col sep=space]{../processed/colorful/NLOcont.dat};
 %\addlegendentry{ColorFUL, NLOcont}
-\addplot[color=red,mark=o,only marks, mark size=1.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={1.025*\thisrowno{3}},  col sep=space]{../processed/colorful/ALL.dat};
-\addlegendentry{ColorFUL$\times1.025$, NNLO}
+\addplot[color=red,mark=o,only marks, mark size=1.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={1.0253894*\thisrowno{3}},  col sep=space]{../processed/colorful/ALL.dat};
+\addlegendentry{ColorFUL, NNLO}
 %\addplot[color=red,mark=*,only marks, mark size=1.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y index=3,  y error index=4, col sep=space]{../processed/colorful/NNLOcont.dat};
 %\addlegendentry{ColorFUL, NNLOcont}
 
@@ -108,7 +108,7 @@
        \node[draw=none,anchor=west] (source) at (axis cs:0.0,1.0){};
        \node[draw=none](destination) at (axis cs:180,1.0){};
        \draw[thick,-](source)--(destination);
-         \addplot[mark=o, mark size=1.0pt, color=black,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index =0, y expr=(1.025*\thisrowno{1} / \thisrowno{11} ), col sep=space ]{../processed/BOTH.dat};
+         \addplot[mark=o, mark size=1.0pt, color=black,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index =0, y expr=(1.0253894*\thisrowno{1} / \thisrowno{11} ), col sep=space ]{../processed/BOTH.dat};
          \addplot[mark=+, mark size=1.0pt, color=black,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index =0, y expr=(180.0/2.0*\thisrowno{6} / \thisrowno{11} ), col sep=space ]{../processed/BOTH.dat};
         %\addplot[mark=none, color=blue,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index =0, y expr={\thisrowno{1}/\thisrowno{6}}, y error expr={\thisrowno{7}/\thisrowno{6}}, col sep=space ]{../../share/#2/fits/fit_0504011001.dat};
 \end{axis}
@@ -136,7 +136,7 @@
        \node[draw=none,anchor=west] (source) at (axis cs:0.0,1.0){};
        \node[draw=none](destination) at (axis cs:180,1.0){};
        \draw[thick,-](source)--(destination);
-        \addplot[mark=o, mark size=1.0pt, color=blue,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index =0, y expr=(1.025*\thisrowno{2} / \thisrowno{13} ), col sep=space ]{../processed/BOTH.dat};
+        \addplot[mark=o, mark size=1.0pt, color=blue,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index =0, y expr=(1.0253894*\thisrowno{2} / \thisrowno{13} ), col sep=space ]{../processed/BOTH.dat};
         \addplot[mark=+, mark size=1.0pt, color=blue,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index =0, y expr=(180.0/2.0*\thisrowno{7} / \thisrowno{13} ), col sep=space ]{../processed/BOTH.dat};
         %\addplot[mark=none, color=blue,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index =0, y expr={\thisrowno{1}/\thisrowno{6}}, y error expr={\thisrowno{7}/\thisrowno{6}}, col sep=space ]{../../share/#2/fits/fit_0504011001.dat};
 \end{axis}
@@ -163,7 +163,7 @@
        \node[draw=none,anchor=west] (source) at (axis cs:0.0,1.0){};
        \node[draw=none](destination) at (axis cs:180,1.0){};
        \draw[thick,-](source)--(destination);
-        \addplot[mark=o, mark size=0.25pt, color=red,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index =0, y expr=(1.025*2.0/180.0*\thisrowno{3} / \thisrowno{8} ), col sep=space ]{../processed/BOTH.dat};
+        \addplot[mark=o, mark size=0.25pt, color=red,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index =0, y expr=(1.0253894*2.0/180.0*\thisrowno{3} / \thisrowno{8} ), col sep=space ]{../processed/BOTH.dat};
         %\addplot[mark=none, color=blue,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index =0, y expr={\thisrowno{1}/\thisrowno{6}}, y error expr={\thisrowno{7}/\thisrowno{6}}, col sep=space ]{../../share/#2/fits/fit_0504011001.dat};
 \end{axis}
 \end{tikzpicture}
