@@ -1,6 +1,6 @@
       PROGRAM EECANALYTIC
       IMPLICIT NONE
-      real*16 GETLO,GETNLO,al,pi
+      real*16 GETLO,GETNLO,GETLOMOM,GETNLOMOM,al,pi
       real*16 g11,g12,g21,g22,g23,g24
       real*16 g25,g26,g31,g32,g33,g34,g35
       real*16 A, B
@@ -11,7 +11,7 @@
 
       open(11,file='doc/predictions/analytic/LO.dat')
       do i=1,180
-      N=50
+      N=500
       write(11,'(f8.4, E15.6)')(1.0q0*i-0.5),
      .al*GETLO(1.0q0*(1.0q0*i-1.0q0),1.0q0*i,N)      
       enddo
@@ -19,7 +19,7 @@
       close(11)
       open(12,file='doc/predictions/analytic/NLO.dat')
       do i=1,180
-      N=100
+      N=1000
       write(12,'(f8.4, E15.6)')(1.0q0*i-0.5),
      .al*GETLO(1.0q0*(1.0q0*i-1.0q0),1.0q0*i,N)+
      .al*al*GETNLO(1.0q0*(1.0q0*i-1.0q0),1.0q0*i,N)     
@@ -45,8 +45,17 @@
       write(*,*) 'Bnlc', BNlc(0.5q0)
       write(*,*) 'Blc', Blc(0.5q0)
       write(*,*)pi**2/6.0q0
-      write(*,*)'TOTAL INTEGRAL NUMERIC vs ANALYTIC'
-      write(*,*)GETLO(0.0q0,180.0q0,20000000),16.0q0*pi*pi/35.0q0
+      write(*,*)'EEC LO MOMENTS NUMERIC vs ANALYTIC'
+      write(*,*)GETLOMOM(1,2000000),
+     .64.0q0*pi/35.0q0
+      write(*,*)GETLOMOM(2,200000),
+     .4.0q0/9.0q0*(-33.0q0+4.0q0*pi*pi)
+      write(*,*)GETLOMOM(3,200000),
+     .32.0q0/15.0q0*pi*(-69.0q0+100.0q0*log(2.0q0))
+      write(*,*)GETLOMOM(4,200000),
+     .-8.0q0/3.0q0*(-277.0q0+28.0q0*pi*pi)
+      write(*,*)GETLOMOM(5,200000),
+     .-16.0q0/9.0q0*pi*(-857.0q0+1236.0q0*log(2.0q0))
       END
 
 CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -64,9 +73,9 @@ CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
         sum=0.0q0
         do i=1,N
         z=z1+dz*i
-        sum=sum+A(z)/2.0q0*pi*sqrt(z*(1.0q0-z))
+        sum=sum+A(z)
         enddo
-        GETLO=SUM/(1.0q0*N)
+        GETLO=SUM/(1.0q0*N)*(z2-z1)*180.0/2.0d0
       end
 
 
@@ -81,9 +90,44 @@ CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
         sum=0.0q0
         do i=1,N
         z=z1+dz*i
-        sum=sum+B(z)/2.0q0*pi*sqrt(z*(1.0q0-z))
+        sum=sum+B(z)
         enddo
-        GETNLO=SUM/(1.0q0*N)
+        GETNLO=SUM/(1.0q0*N)*(z2-z1)*180.0/2.0d0
+      end
+
+
+      real*16 FUNCTION GETLOMOM(K,N)
+      IMPLICIT NONE
+      real*16 z,th1, th2, pi,z1,z2,dz,sum,A
+      integer i,N,K
+      parameter(pi=3.14159265358979323846264338328q0)
+      z1=0.0q0
+      z2=1.0q0
+      dz=(Z2-z1)/(1.0q0*N+1.0q0)  
+      
+        sum=0.0q0
+        do i=1,N
+        z=z1+dz*i
+        sum=sum+A(z)*(4*z*(1-z))**(K/2.0)
+        enddo
+        GETLOMOM=SUM/(1.0q0*N)*(z2-z1)
+      end
+
+
+      real*16 FUNCTION GETNLOMOM(K,N)
+      IMPLICIT NONE
+      real*16  z, th1, th2, pi,z1,z2,dz,sum,B
+      integer i,N,K
+      parameter(pi=3.14159265358979323846264338328q0)
+      z1=0.0q0
+      z2=1.0q0
+      dz=(Z2-z1)/(1.0q0*N+1.0q0)  
+        sum=0.0q0
+        do i=1,N
+        z=z1+dz*i
+        sum=sum+B(z)*(4*z*(1-z))**(K/2.0)
+        enddo
+        GETNLOMOM=SUM/(1.0q0*N)*(z2-z1)
       end
 
 CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
