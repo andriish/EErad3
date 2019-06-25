@@ -56,10 +56,6 @@ c--- optimization of integration for a particular distribution (used only for mo
         write(*,*)' ***** WARNING ******'
         write(*,*)' Subroutine DISTRIB optimised for',
      . ' y23D (unweighted) '
-      elseif(iaver.eq.9)then
-        write(*,*)' ***** WARNING ******'
-        write(*,*)' Subroutine DISTRIB optimised for',
-     . ' EEC (unweighted) '
       endif
         init=1
       endif
@@ -130,10 +126,6 @@ CAV*********************************************************************
         if(Tmajor.gt.Fcut)ipass=1
         if(1d0-Tpar.gt.Tcut)ipass=1
         if(em2h.gt.em2hcut)ipass=1
-CAV********************************************************************* 
-      elseif(iaver.eq.9)then
-        if(y23D.gt.ycutD)ipass=1
-CAV********************************************************************* 
       endif
       return
       end

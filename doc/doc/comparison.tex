@@ -137,7 +137,7 @@
        \node[draw=none](destination) at (axis cs:180,1.0){};
        \draw[thick,-](source)--(destination);
         \addplot[mark=o, mark size=1.0pt, color=blue,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index =0, y expr=(1.0253894*\thisrowno{2} / \thisrowno{13} ), col sep=space ]{../processed/BOTH.dat};
-        \addplot[mark=+, mark size=1.0pt, color=blue,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index =0, y expr=(180.0/2.0*\thisrowno{7} / \thisrowno{13} ), col sep=space ]{../processed/BOTH.dat};
+        \addplot[mark=+, mark size=1.0pt, color=blue,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index =0, y expr=(1.037561*180.0/2.0*\thisrowno{7} / \thisrowno{13} ), col sep=space ]{../processed/BOTH.dat};
         %\addplot[mark=none, color=blue,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index =0, y expr={\thisrowno{1}/\thisrowno{6}}, y error expr={\thisrowno{7}/\thisrowno{6}}, col sep=space ]{../../share/#2/fits/fit_0504011001.dat};
 \end{axis}
 \begin{axis}[ylabel={$\frac{ColorFUL}{EERAD3}$, NNLO},xlabel=$\chi\degree$,restrict y to domain=-10:10,
@@ -163,7 +163,7 @@
        \node[draw=none,anchor=west] (source) at (axis cs:0.0,1.0){};
        \node[draw=none](destination) at (axis cs:180,1.0){};
        \draw[thick,-](source)--(destination);
-        \addplot[mark=o, mark size=0.25pt, color=red,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index =0, y expr=(1.0253894*2.0/180.0*\thisrowno{3} / \thisrowno{8} ), col sep=space ]{../processed/BOTH.dat};
+        \addplot[mark=o, mark size=0.25pt, color=red,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index =0, y expr=(1.0253894*2.0/180.0*\thisrowno{3} / \thisrowno{8}/1.039549 ), col sep=space ]{../processed/BOTH.dat};
         %\addplot[mark=none, color=blue,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index =0, y expr={\thisrowno{1}/\thisrowno{6}}, y error expr={\thisrowno{7}/\thisrowno{6}}, col sep=space ]{../../share/#2/fits/fit_0504011001.dat};
 \end{axis}
 \end{tikzpicture}

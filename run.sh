@@ -38,8 +38,8 @@ b=$(basename $a)
 ../eerad3 -i $a -n 15 &> ../log/$b'_15.log' &
 done
 
-#for a in $(ls -1 ../cards/Et*input | grep '\.NNLO'| grep QQQQ); do
-for a in $(ls -1 ../cards/Et*input | grep '\.NNLO'); do
+for a in $(ls -1 ../cards/Et*input | grep '\.NNLO'| grep QQQQ); do
+#for a in $(ls -1 ../cards/Et*input | grep '\.NNLO'); do
 :
 b=$(basename $a)
 ../eerad3 -i $a -n 1 &> ../log/$b'_1.log' &
@@ -67,3 +67,5 @@ b=$(basename $a)
 done
 
 ../eerad3_dist -i ../cards/eerad3_dist.input
+cd doc
+sh bin/convert_predictions.sh

@@ -86,9 +86,6 @@ C
       if(iaver.eq.6)ctype='.D'
       if(iaver.eq.7)ctype='.J'
       if(iaver.eq.8)ctype='.L'
-CAV*********************************************************************
-      if(iaver.eq.9)ctype='.E'
-CAV*********************************************************************
       if(ip.eq. 1)char='v5a'
       if(ip.eq. 2)char='v5b'
       gridfile = 'E'//fname(4:13)//char//ctype
@@ -409,9 +406,6 @@ C
       if(iaver.eq.6)ctype='.D'
       if(iaver.eq.7)ctype='.J'
       if(iaver.eq.8)ctype='.L'
-CAV*********************************************************************
-      if(iaver.eq.9)ctype='.E'
-CAV*********************************************************************
       if(ip.eq. 1)char='v4a'
       gridfile = 'E'//fname(4:13)//char//ctype
 
@@ -724,9 +718,6 @@ C
       if(iaver.eq.6)ctype='.D'
       if(iaver.eq.7)ctype='.J'
       if(iaver.eq.8)ctype='.L'
-CAV*********************************************************************      
-      if(iaver.eq.9)ctype='.E'
-CAV*********************************************************************
       char='v3a'
       gridfile = 'E'//fname(4:13)//char//ctype
 C
