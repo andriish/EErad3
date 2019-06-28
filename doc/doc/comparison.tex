@@ -74,7 +74,7 @@
 \addplot[color=black,mark=+,only marks, mark size=2.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={180/2.0*1.0*\thisrowno{1}}, col sep=space]{../processed/eerad3/ALL.dat};
 \addlegendentry{EERAD3, LO}
 
-\addplot[color=blue,mark=+,only marks, mark size=2.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={180/2.0*1.0*(\thisrowno{2})}, col sep=space]{../processed/eerad3/ALL.dat};
+\addplot[color=blue,mark=+,only marks, mark size=2.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={180/2.0*1.0*(\thisrowno{2}+\thisrowno{1}*2*0.118/(2.0*3.1415)}, col sep=space]{../processed/eerad3/ALL.dat};
 \addlegendentry{EERAD3, NLO}
 
 \addplot[color=red,mark=+,only marks, mark size=2.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={180/2.0*1.0*(\thisrowno{3})}, col sep=space]{../processed/eerad3/ALL.dat};
@@ -109,7 +109,7 @@
        \node[draw=none](destination) at (axis cs:180,1.0){};
        \draw[thick,-](source)--(destination);
          \addplot[mark=o, mark size=1.0pt, color=black,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index =0, y expr=(1.0253894*\thisrowno{1} / \thisrowno{11} ), col sep=space ]{../processed/BOTH.dat};
-         \addplot[mark=+, mark size=1.0pt, color=black,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index =0, y expr=(180.0/2.0*\thisrowno{6} / \thisrowno{11} ), col sep=space ]{../processed/BOTH.dat};
+         \addplot[mark=+, mark size=1.0pt, color=black,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index =0, y expr=(180.0/2.0*(\thisrowno{6}) / \thisrowno{11} ), col sep=space ]{../processed/BOTH.dat};
         %\addplot[mark=none, color=blue,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index =0, y expr={\thisrowno{1}/\thisrowno{6}}, y error expr={\thisrowno{7}/\thisrowno{6}}, col sep=space ]{../../share/#2/fits/fit_0504011001.dat};
 \end{axis}
 \begin{axis}[ylabel={$\frac{Numeric}{Analytic}$, NLO},restrict y to domain=-10:10,
@@ -137,7 +137,7 @@
        \node[draw=none](destination) at (axis cs:180,1.0){};
        \draw[thick,-](source)--(destination);
         \addplot[mark=o, mark size=1.0pt, color=blue,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index =0, y expr=(1.0253894*\thisrowno{2} / \thisrowno{13} ), col sep=space ]{../processed/BOTH.dat};
-        \addplot[mark=+, mark size=1.0pt, color=blue,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index =0, y expr=(180.0/2.0*\thisrowno{7} / \thisrowno{13} ), col sep=space ]{../processed/BOTH.dat};
+        \addplot[mark=+, mark size=1.0pt, color=blue,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index =0, y expr=(180.0/2.0*(\thisrowno{7}+\thisrowno{6}*2*0.118/(2.0*3.1415)) / \thisrowno{13} ), col sep=space ]{../processed/BOTH.dat};
         %\addplot[mark=none, color=blue,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index =0, y expr={\thisrowno{1}/\thisrowno{6}}, y error expr={\thisrowno{7}/\thisrowno{6}}, col sep=space ]{../../share/#2/fits/fit_0504011001.dat};
 \end{axis}
 \begin{axis}[ylabel={$\frac{ColorFUL}{EERAD3}$, NNLO},xlabel=$\chi\degree$,restrict y to domain=-10:10,
@@ -171,5 +171,6 @@
 \caption{Theory predictions}
 \label{fig:result}
 \end{figure}
+%$LO$, $NLO$ and $NNLO$ stand for the full predictions in corresponding accuracy normalized to $\sigma_0$.
 	
 \end{document}
