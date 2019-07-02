@@ -74,17 +74,17 @@
 \addplot[color=black,mark=+,only marks, mark size=2.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={180/2.0*1.0*\thisrowno{1}}, col sep=space]{../processed/eerad3/ALL.dat};
 \addlegendentry{EERAD3, LO}
 
-\addplot[color=blue,mark=+,only marks, mark size=2.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={180/2.0*1.0*(\thisrowno{2}+\thisrowno{1}*2*0.118/(2.0*3.1415)}, col sep=space]{../processed/eerad3/ALL.dat};
+\addplot[color=blue,mark=+,only marks, mark size=2.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={180/2.0*1.0*(\thisrowno{2}+\thisrowno{1}*2*0.118/(2.0*3.1415) )  }, col sep=space]{../processed/eerad3/ALL.dat};
 \addlegendentry{EERAD3, NLO}
 
-\addplot[color=red,mark=+,only marks, mark size=2.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={180/2.0*1.0*(\thisrowno{3})}, col sep=space]{../processed/eerad3/ALL.dat};
+\addplot[color=red,mark=+,only marks, mark size=2.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={180/2.0*1.0*(\thisrowno{3}    )}, col sep=space]{../processed/eerad3/ALL.dat};
 \addlegendentry{EERAD3, NNLO}
 
 
 %\addplot[color=red,mark=+,only marks, mark size=1.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={0.83*2.0*1.0*\thisrowno{1}},  y error index=2, col sep=space]{../processed/eerad3/LOl.dat};
 %\addlegendentry{EERAD3, LOl}
 \end{axis}
-\begin{axis}[ylabel={$\frac{Numeric}{Analytic}$, LO},restrict y to domain=0.5:1.1,
+\begin{axis}[ylabel={$\frac{Numeric}{Analytic}$, LO},restrict y to domain=0.9:1.1,
     xmin=-2,xmax=182,
     ymin=0.999,ymax=1.001,
     grid=none,
@@ -95,7 +95,7 @@
     enlargelimits={abs=0.0001},    
     ticklabel style={font=\small,fill=none},
     xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=0, /pgf/number format/fixed zerofill} ,
-    yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=4, /pgf/number format/fixed zerofill} ,
+    yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3, /pgf/number format/fixed zerofill} ,
         xlabel style={at={(ticklabel* cs:1)},anchor=north west, xshift=-0.5cm, yshift=-0.3cm, font=\large},
     ylabel style={at={(ticklabel* cs:1)},anchor=south east, xshift=0.0cm, yshift=0.5cm, font=\small},
     legend style={draw=none},
