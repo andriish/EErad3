@@ -57,11 +57,12 @@ CARDS=( E00.y1d8.iL0.LO.input
 #        )
 
 
+for i in `seq 1 200`;
+do
+
 for CARD in "${CARDS[@]}"
 do
 
-for i in `seq 200 205`;
-do
 rm -rf dir.txt
 touch dir.txt
 echo   $CARD     >> dir.txt
