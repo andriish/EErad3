@@ -144,7 +144,7 @@ CAV*********************************************************************
 
       subroutine combinehistoL(inum,fname,minfile,maxfile)
       implicit real*8(a-h,o-z)
-      character*20 fname
+      character*22 fname
       parameter (nbins0=400,nbins1=200,nbins2=100,nbins3=50,nbins4=25)
       dimension t0(1:nbins0),t1(1:nbins1),t2(1:nbins2),
      .          t3(1:nbins3),t4(1:nbins4)
@@ -252,7 +252,7 @@ CAV*********************************************************************
 
       subroutine combinehisto(inum,fname,minfile,maxfile)
       implicit real*8(a-h,o-z)
-      character*20 fname
+      character*22 fname
       parameter (nbins0=400,nbins1=200,nbins2=100,nbins3=50,nbins4=25)
       dimension t0(1:nbins0),t1(1:nbins1),t2(1:nbins2),
      .          t3(1:nbins3),t4(1:nbins4)
@@ -311,7 +311,7 @@ CAV*********************************************************************
 
       subroutine loadhisto(nbins,yi,ei,wi,di,t,froot,minfile,maxfile)
       implicit real*8(a-h,o-z)
-      character*20 froot,fname
+      character*22 froot,fname
       logical fi
       dimension yi(minfile:maxfile,1:nbins)
      .         ,ei(minfile:maxfile,1:nbins)
@@ -326,11 +326,14 @@ CAV*********************************************************************
             if (i.eq.iv(j)) iflag = 1
          enddo
          if (iflag.eq.1) goto 60   
-         write(fname,100) i
-         if (i.lt.10) fname='E0'//fname(2:2)//froot(1:13)
+         write(fname,'(I4)') i
+         if (i.lt.10) fname='E000'//fname(4:4)//froot(1:13)
          if (i.ge.10.and.i.lt.100) 
-     .             fname='E'//fname(1:2)//froot(1:13)
-         if (i.eq.100) fname='E00'//froot(1:13)
+     .             fname='E00'//fname(3:4)//froot(1:13)
+         if (i.ge.100.and.i.lt.1000) 
+     .             fname='E0'//fname(2:4)//froot(1:13)
+         if (i.ge.1000.and.i.lt.10000) 
+     .             fname='E'//fname(1:4)//froot(1:13)
          inquire(file=fname,EXIST=fi)
          if (.not.fi) then 
             write(6,*) 'Missing file: ', fname
@@ -346,7 +349,6 @@ c            wi(i,j) = 1d0
          close(11)
  60      continue
       enddo
- 100  format(i2)
       return
       end
 

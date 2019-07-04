@@ -35,9 +35,9 @@
       character*2 ianame(1:3)
       character*40 ibname(1:3)
       character*40 froot
-      character*20 fname
+      character*22 fname
       character*1 itag
-      dimension iseeds(1:2,0:99),icolmax(0:2)
+      dimension iseeds(1:2,0:999),icolmax(0:2)
       parameter(pi=3.141592653589793238d0)
       common/intech/iaver,imom,idist,iang,idebug
       common/inphys/nloop,icol,njets
@@ -49,28 +49,8 @@
       common /runinfo/itmax1,itmax2,nshot3,nshot4,nshot5(2) 
       common/outfile/fname
       common /ivegas/iwarm,iprod
+      INCLUDE 'iseeds.f'
 
-      data iseeds/
-     . 2991, 9281, 3823, 8151, 6239, 8754, 9514, 3746, 4893, 7731, 
-     . 8635, 4662, 4132, 3764, 5234, 4892, 9753, 7629, 2531, 1638, 
-     . 9376, 4157, 6472, 8086, 8526, 1264, 4723, 7549, 9472, 4637, 
-     . 3746, 4682, 9854, 8472, 2332, 7724, 5524, 6352, 3652, 7382, 
-     . 4431, 3667, 4538, 4888, 1838, 7655, 6764, 8382, 4885, 9980, 
-     . 9876, 2312, 8743, 5521, 7512, 1123, 9814, 5531, 1249, 6413, 
-     . 3468, 2814, 4392, 0921,  736, 2881, 4831, 8381, 2319, 4452, 
-     . 3112,  978, 4791,  541, 1598, 8421, 5798, 4359, 2345, 3258, 
-     . 3409,   91,  714, 8383, 2553, 7344, 9589, 4931,  941, 3881, 
-     . 9145, 3885,   12, 4949, 9693, 3919, 9592, 1312, 6667, 2823, 
-     . 5994, 2864, 4913, 6511, 8726, 2745, 4537, 2371, 6148, 4714, 
-     . 8414,   28, 3851,  284, 3884, 2813,  847, 1822, 5871, 2442, 
-     . 4771, 7411, 4728, 2771, 4881, 9831, 1236, 8831,  837, 3771, 
-     . 5993, 1277, 3441, 8482,  693, 4882, 9391, 3899, 3991, 1134, 
-     . 2884, 3851, 5918,  761, 9278, 9391,  101, 2391, 8124, 9391, 
-     .  401, 4313, 3855, 8731, 4721, 3893,  145, 4992, 7573, 8471, 
-     . 9981, 2383,  921, 3881,  388, 1384, 7628, 7237, 9492, 3884, 
-     .   28, 8313, 3883, 8281, 1332, 3927, 5452, 7246, 2812, 2831, 
-     . 7691, 3718, 4881,  331, 6266, 2163, 4772, 7371, 9931, 3881, 
-     . 7713, 6361, 3488, 9281, 4913, 3813, 3463,   89,  918, 8381 / 
 
 * iaver=0 : all distributions
 * iaver=1 : BW
@@ -127,7 +107,7 @@
             ilen = len(froot)
          endif
       enddo
-      if (inum.lt.0.or.inum.gt.99) inum = 0
+      if (inum.lt.0.or.inum.gt.9999) inum = 0
       irlen = 0
       do i=1,ilen
          if (ichar(froot(i:i)).eq.32.and.irlen.eq.0) then
@@ -136,12 +116,19 @@
       enddo
       i1 = iseeds(1,inum)
       i2 = iseeds(2,inum)
+
       if (inum.lt.10) then  
+         fname='E000'
+         write(fname(5:5),'(I1)') inum
+      elseif (inum.ge.10.and.inum.lt.100) then  
+         fname='E00'
+         write(fname(4:5),'(I2)') inum
+      elseif (inum.ge.100.and.inum.lt.1000) then  
          fname='E0'
-         write(fname(3:3),'(I1)') inum
-      else
+         write(fname(3:5),'(I3)') inum
+      elseif (inum.ge.1000.and.inum.lt.10000) then  
          fname='E'
-         write(fname(2:3),'(I2)') inum
+         write(fname(2:5),'(I4)') inum
       endif
       open(9,file=froot)
       read(9,*) y0
@@ -172,9 +159,9 @@
       icolmax(1) = 3
       icolmax(2) = 6
       if (icol.le.0.or.icol.gt.icolmax(abs(nloop))) icol=0
-      fname = fname(1:3)//'.y'//char(iy0+48)//'d'//char(iy1+48)//'.'
-      fname = fname(1:8)//'.i'//itag(1:1)//char(icol+48)//'.'
-
+      fname = fname(1:5)//'.y'//char(iy0+48)//'d'//char(iy1+48)//'.'
+       write(*,*)fname
+      fname = fname(1:10)//'.i'//itag(1:1)//char(icol+48)//'.'
        ymin=1d0
 
 **** the default cuts for the event shape run
@@ -246,7 +233,7 @@ CAV*********************************************************************
       character*34 sblank3
       character*60 starline
       character*1 star 
-      character*20 fname
+      character*22 fname
       common /qcd/as,ca,cflo,cf,tr,cn 
       common /tcuts/ymin,y0
       common /cuts/ycutJ,ycutD,ycutG,Bcut,Ccut,Fcut,Tcut,Scut,em2hcut

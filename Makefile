@@ -18,11 +18,11 @@ FFILES4   = src/eecanalytic.f
 #for gfortran compiler
 FC        = gfortran
 #FFLAGS    = -g -fno-automatic -O -finit-integer=0  -Wall -fcheck=all -g -fbacktrace  -finit-real=zero -ffpe-trap=invalid,zero,overflow,underflow
-FFLAGS    = -g -fno-automatic -O -finit-integer=0    -finit-real=zero -ffpe-trap=invalid,zero,overflow,underflow
+FFLAGS    = -g -fno-automatic -O -finit-integer=0    -finit-real=zero -ffpe-trap=invalid,zero,overflow,underflow 
 #for ifort compiler
 #FC        = ifort
 #FFLAGS    = -save -O4
-
+LDFLAGS = -L. -static
 
 OBJFILES1 = $(addprefix $(OBJDIR)/,$(patsubst %.f,%.o,$(FFILES1)))
 OBJFILES2 = $(addprefix $(OBJDIR)/,$(patsubst %.f,%.o,$(FFILES2)))
@@ -32,16 +32,16 @@ $(OBJDIR)/%.o:	%.f
 	$(FC) $(FFLAGS) -c $< -o $@
 
 $(NAME1): $(OBJFILES1)
-	$(FC) $(FFLAGS) -o $@ $(OBJFILES1)
+	$(FC) $(LDFLAGS) $(FFLAGS) -o $@ $(OBJFILES1)
 $(NAME2): $(OBJFILES2)
-	$(FC) $(FFLAGS) -o $@ $(OBJFILES2)
+	$(FC) $(LDFLAGS) $(FFLAGS) -o $@ $(OBJFILES2)
 $(NAME3): $(OBJFILES3)
-	$(FC) $(FFLAGS) -o $@ $(OBJFILES3)
+	$(FC) $(LDFLAGS) $(FFLAGS) -o $@ $(OBJFILES3) 
 
 # We avoid -fcheck=all
-FFLAGS4    = -g -fno-automatic -O -finit-integer=0    -finit-real=zero -ffpe-trap=invalid,zero,overflow,underflow
+FFLAGS4    = -g -fno-automatic -O -finit-integer=0    -finit-real=zero -ffpe-trap=invalid,zero,overflow,underflow  
 $(NAME4): $(FFILES4)
-	$(FC) $(FFLAGS4) $(FFILES4) -o $@ 
+	$(FC) $(LDFLAGS) $(FFLAGS4) $(FFILES4) -o $@ 
 
 clean:
 	rm -f obj/* eerad3 eerad3_dist eerad3_combine eecanalytic
