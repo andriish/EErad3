@@ -2,5 +2,5 @@
 y1d6    ! frooty
 iZ3     ! frooti
 tx      ! filetag
-1 50    ! minfile maxfile
+1 999    ! minfile maxfile
 0       ! nvoid

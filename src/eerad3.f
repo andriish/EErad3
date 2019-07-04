@@ -37,7 +37,7 @@
       character*40 froot
       character*22 fname
       character*1 itag
-      dimension iseeds(1:2,0:999),icolmax(0:2)
+      dimension iseeds(1:2,0:9999),icolmax(0:2)
       parameter(pi=3.141592653589793238d0)
       common/intech/iaver,imom,idist,iang,idebug
       common/inphys/nloop,icol,njets

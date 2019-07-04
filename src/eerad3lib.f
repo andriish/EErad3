@@ -88,7 +88,7 @@ C
       if(iaver.eq.8)ctype='.L'
       if(ip.eq. 1)char='v5a'
       if(ip.eq. 2)char='v5b'
-      gridfile = 'E'//fname(4:13)//char//ctype
+      gridfile = 'E'//fname(6:15)//char//ctype
 C
       if(istat.eq.0.or.istat.eq.1.or.istat.eq.2)then
 c
@@ -407,7 +407,7 @@ C
       if(iaver.eq.7)ctype='.J'
       if(iaver.eq.8)ctype='.L'
       if(ip.eq. 1)char='v4a'
-      gridfile = 'E'//fname(4:13)//char//ctype
+      gridfile = 'E'//fname(6:15)//char//ctype
 
 C
       if(istat.eq.0.or.istat.eq.1.or.istat.eq.2)then
@@ -719,7 +719,7 @@ C
       if(iaver.eq.7)ctype='.J'
       if(iaver.eq.8)ctype='.L'
       char='v3a'
-      gridfile = 'E'//fname(4:13)//char//ctype
+      gridfile = 'E'//fname(6:15)//char//ctype
 C
       if(istat.eq.0.or.istat.eq.1.or.istat.eq.2)then
 c

@@ -337,7 +337,7 @@ CAV*********************************************************************
          inquire(file=fname,EXIST=fi)
          if (.not.fi) then 
             write(6,*) 'Missing file: ', fname
-            stop
+            goto 60
          endif
          open(11,file=fname)
          do j=1,nbins

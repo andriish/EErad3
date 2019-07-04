@@ -6,8 +6,6 @@ tar xvzf $ZMCSP
 ls -lah
 pwd
 uname -a
-ldconfig -v
-find 
 
 CARD=$(cat dir.txt | head -n 1| tail -n 1)
 SEED=$(cat dir.txt | head -n 2| tail -n 1)
