@@ -1,0 +1,159 @@
+\documentclass{article}
+\usepackage[left=2.5cm, right=2.5cm, top=1cm, bottom=1cm]{geometry}
+\usepackage{standalone}
+\usepackage{xspace}
+\usepackage{tikz}
+\usetikzlibrary{external}
+\usepackage{pgfplotstable}
+%\pgfplotsset{compat=1.13}
+%\tikzexternalize
+%\tikzset{external/system call={lualatex  -shell-escape -enable-write18  --jobname "\image" "\texsource"}}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{gensymb}
+\usepackage{pgfplotstable}
+\usepackage{colortbl}
+\newcommand{\eVdist}{\kern-0.06667em}
+\newcommand{\GeV}{{\,\text{Ge}\eVdist\text{V\/}}}
+\newcommand{\TeV}{{\,\text{Te}\eVdist\text{V\/}}}
+\newcommand{\Mev}{{\,\text{Me}\eVdist\text{V\/}}}
+
+
+\begin{document}
+
+
+\begin{figure}\centering\boldmath
+\adjustbox{width=1.0\linewidth}{
+\begin{tikzpicture}
+\pgfplotsset{try min ticks=5}
+\begin{axis}[ylabel=$1/\sigma_{t}{\rm d}\Sigma/{\rm d}\chi$,
+    ymode=log, 
+    xmin=-2,xmax=4000,
+    ymin=0.009,ymax=10000.0,
+    grid=none,
+    grid style={line width=.1pt, draw=gray!10},
+    major grid style={line width=.3pt,draw=gray!80},
+    enlargelimits={abs=0.0001},    
+    ticklabel style={font=\Large,fill=none},
+    xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=0, /pgf/number format/fixed zerofill, font=\Large} ,
+        xlabel style={at={(ticklabel* cs:1)},anchor=north west, xshift=-0.8cm, yshift=-0.0cm, font=\Huge}
+        minor x tick num=4,
+       xticklabel=\empty,
+    yticklabel={
+        \pgfkeys{/pgf/fpu=true}
+        \pgfmathparse{exp(\tick)}%
+        \pgfmathprintnumber[fixed, precision=3,fixed zerofill]{\pgfmathresult}
+        \pgfkeys{/pgf/fpu=false}
+      }, 
+        xlabel style={at={(ticklabel* cs:1)},anchor=north west, xshift=-0.8cm, yshift=-0.0cm, font=\Huge},
+    ylabel style={at={(ticklabel* cs:1)},anchor=south west, xshift=-4.8cm, yshift=1.0cm, font=\LARGE},
+        legend style={legend pos=north west,font={\bf\large},cells={align=left}},
+        width=1.0\textwidth,
+        height=0.7\textheight,
+        yshift=0.32\textheight
+    ]
+\addplot[color=red,  mark=none, mark size=1.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={\thisrowno{2}}, col sep=space]{temp/iN1.90.txt};
+\addlegendentry{iN1}
+\addplot[color=green,mark=none, mark size=1.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={\thisrowno{2}}, col sep=space]{temp/iN2.90.txt};
+\addlegendentry{iN2}
+\addplot[color=blue, mark=none, mark size=1.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={-1.0*\thisrowno{2}}, col sep=space]{temp/iN3.90.txt};
+\addlegendentry{iN3}
+\end{axis}
+\end{tikzpicture}
+}
+\caption{Theory predictions}
+\label{fig:result}
+\end{figure}
+
+
+
+
+
+
+\begin{figure}\centering\boldmath
+\adjustbox{width=1.0\linewidth}{
+\begin{tikzpicture}
+\pgfplotsset{try min ticks=5}
+\begin{axis}[ylabel=$1/\sigma_{t}{\rm d}\Sigma/{\rm d}\chi$,
+    ymode=log, 
+    xmin=-2,xmax=4000,
+    ymin=0.009,ymax=10000.0,
+    grid=none,
+    grid style={line width=.1pt, draw=gray!10},
+    major grid style={line width=.3pt,draw=gray!80},
+    enlargelimits={abs=0.0001},    
+    ticklabel style={font=\Large,fill=none},
+    xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=0, /pgf/number format/fixed zerofill, font=\Large} ,
+        xlabel style={at={(ticklabel* cs:1)},anchor=north west, xshift=-0.8cm, yshift=-0.0cm, font=\Huge}
+        minor x tick num=4,
+       xticklabel=\empty,
+    yticklabel={
+        \pgfkeys{/pgf/fpu=true}
+        \pgfmathparse{exp(\tick)}%
+        \pgfmathprintnumber[fixed, precision=3,fixed zerofill]{\pgfmathresult}
+        \pgfkeys{/pgf/fpu=false}
+      }, 
+        xlabel style={at={(ticklabel* cs:1)},anchor=north west, xshift=-0.8cm, yshift=-0.0cm, font=\Huge},
+    ylabel style={at={(ticklabel* cs:1)},anchor=south west, xshift=-4.8cm, yshift=1.0cm, font=\LARGE},
+        legend style={legend pos=north west,font={\bf\large},cells={align=left}},
+        width=1.0\textwidth,
+        height=0.7\textheight,
+        yshift=0.32\textheight
+    ]
+\addplot[color=red,  mark=none, mark size=1.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={\thisrowno{2}}, col sep=space]{temp/iZ1.90.txt};
+\addlegendentry{iZ1}
+\addplot[color=green,mark=none, mark size=1.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={\thisrowno{2}}, col sep=space]{temp/iZ2.90.txt};
+\addlegendentry{iZ2}
+\addplot[color=blue, mark=none, mark size=1.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={\thisrowno{2}}, col sep=space]{temp/iZ3.90.txt};
+\addlegendentry{iZ3}
+\end{axis}
+\end{tikzpicture}
+}
+\caption{Theory predictions}
+\label{fig:result}
+\end{figure}
+
+\begin{figure}\centering\boldmath
+\adjustbox{width=1.0\linewidth}{
+\begin{tikzpicture}
+\pgfplotsset{try min ticks=5}
+\begin{axis}[ylabel=$1/\sigma_{t}{\rm d}\Sigma/{\rm d}\chi$,
+    ymode=log, 
+    xmin=-2,xmax=4000,
+    ymin=0.009,ymax=10000.0,
+    grid=none,
+    grid style={line width=.1pt, draw=gray!10},
+    major grid style={line width=.3pt,draw=gray!80},
+    enlargelimits={abs=0.0001},    
+    ticklabel style={font=\Large,fill=none},
+    xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=0, /pgf/number format/fixed zerofill, font=\Large} ,
+        xlabel style={at={(ticklabel* cs:1)},anchor=north west, xshift=-0.8cm, yshift=-0.0cm, font=\Huge}
+        minor x tick num=4,
+       xticklabel=\empty,
+    yticklabel={
+        \pgfkeys{/pgf/fpu=true}
+        \pgfmathparse{exp(\tick)}%
+        \pgfmathprintnumber[fixed, precision=3,fixed zerofill]{\pgfmathresult}
+        \pgfkeys{/pgf/fpu=false}
+      }, 
+        xlabel style={at={(ticklabel* cs:1)},anchor=north west, xshift=-0.8cm, yshift=-0.0cm, font=\Huge},
+    ylabel style={at={(ticklabel* cs:1)},anchor=south west, xshift=-4.8cm, yshift=1.0cm, font=\LARGE},
+        legend style={legend pos=north west,font={\bf\large},cells={align=left}},
+        width=1.0\textwidth,
+        height=0.7\textheight,
+        yshift=0.32\textheight
+    ]
+\addplot[color=red,  mark=none, mark size=1.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={\thisrowno{2}}, col sep=space]{temp/iZ4.90.txt};
+\addlegendentry{iZ4}
+\addplot[color=green,mark=none, mark size=1.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={\thisrowno{2}}, col sep=space]{temp/iZ5.90.txt};
+\addlegendentry{iZ5}
+\addplot[color=blue, mark=none, mark size=1.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={\thisrowno{2}}, col sep=space]{temp/iZ6.90.txt};
+\addlegendentry{iZ6}
+\end{axis}
+\end{tikzpicture}
+}
+\caption{Theory predictions}
+\label{fig:result}
+\end{figure}
+
+\end{document}
