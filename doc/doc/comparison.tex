@@ -80,7 +80,7 @@
 \addplot[color=red,mark=+,only marks, mark size=2.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={180/2.0*1.0*(\thisrowno{3}    )}, col sep=space]{../processed/eerad3/ALL.dat};
 \addlegendentry{EERAD3, NNLO ($\sigma_{0}$ norm)}
  \addlegendimage{empty legend}
-\addlegendentry{$K(\chi)=1.22-0.001125\chi$ ad hoc function}
+\addlegendentry{$K(\chi)=1.2-0.0007\chi+\frac{1}{\chi-179.4} $ ad hoc}
  
 %\addplot[color=red,mark=+,only marks, mark size=1.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={0.83*2.0*1.0*\thisrowno{1}},  y error index=2, col sep=space]{../processed/eerad3/LOl.dat};
 %\addlegendentry{EERAD3, LOl}
@@ -164,8 +164,8 @@
        \node[draw=none,anchor=west] (source) at (axis cs:0.0,1.0){};
        \node[draw=none](destination) at (axis cs:180,1.0){};
        \draw[thick,-](source)--(destination);
-         \addplot[mark=o, mark size=1.0pt, color=green,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index =0, y expr=(1.0253894*\thisrowno{3} / (\thisrowno{13}*(1.22-0.001125*\thisrowno{0})) ), col sep=space ]{../processed/BOTH.dat};
-         \addplot[mark=+, mark size=1.0pt, color=red,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index =0, y expr=(180.0/2.0*( \thisrowno{8}+2*0.118/(2.0*3.1415)*\thisrowno{7}+5.63692164*0.118/(2.0*3.1415)*0.118/(2.0*3.1415)*\thisrowno{6})/ (\thisrowno{13}*(1.22-0.001125*\thisrowno{0} ) ), col sep=space ]{../processed/BOTH.dat};
+         \addplot[mark=o, mark size=1.0pt, color=green,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index =0, y expr=(1.0253894*\thisrowno{3} / (\thisrowno{13}*(1.2-0.0007*\thisrowno{0}+1.0/(\thisrowno{0}-179.4) )) ), col sep=space ]{../processed/BOTH.dat};
+         \addplot[mark=+, mark size=1.0pt, color=red,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index =0, y expr=(180.0/2.0*( \thisrowno{8}+2*0.118/(2.0*3.1415)*\thisrowno{7}+5.63692164*0.118/(2.0*3.1415)*0.118/(2.0*3.1415)*\thisrowno{6})/ (\thisrowno{13}*(1.2-0.0007*\thisrowno{0}+1.0/(\thisrowno{0}-179.4) ) ), col sep=space ]{../processed/BOTH.dat};
 
          %\addplot[mark=none, color=blue,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index =0, y expr={\thisrowno{1}/\thisrowno{6}}, y error expr={\thisrowno{7}/\thisrowno{6}}, col sep=space ]{../../share/#2/fits/fit_0504011001.dat};
 \end{axis}
