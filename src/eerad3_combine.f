@@ -3,10 +3,13 @@
       character*20 fname,frooty,frooti
       character*2 ianame
       character*40 ibname
+      character*40 icname
+      character*40 idname
       character*40 ifile
       character*2 filetag
       dimension ivoid(100)
       common/voidlist/iv(100),nv
+      common/RPAR/R
       common/outfile/filetag
 
       n = iargc()
@@ -15,7 +18,17 @@
          call getarg(1,ianame)
          call getarg(2,ibname)
          if (ianame.eq.'-i') ifile = ibname
+         R=-1.0d0
       endif 
+       if (n.eq.4) then 
+         call getarg(1,ianame)
+         call getarg(2,ibname)
+         call getarg(3,icname)
+         call getarg(4,idname)
+         if (ianame.eq.'-i') ifile = ibname
+         if (icname.eq.'-R') read(idname,*)R
+         write(*,*)'R=',R
+      endif
  
       open(9,file=ifile)
       read(9,*) iaver
@@ -39,47 +52,47 @@
       fname = '.'//frooty(1:4)//'.'//frooti(1:3)//'.'
 
       if (iaver.eq.8.or.iaver.eq.6) then
-      call combinehistoL(2,fname(1:10)//'Y3a',minfile,maxfile)
-      call combinehistoL(2,fname(1:10)//'Y4a',minfile,maxfile)
-      call combinehistoL(2,fname(1:10)//'Y5a',minfile,maxfile)
-      call combinehistoL(2,fname(1:10)//'S3a',minfile,maxfile)
-      call combinehistoL(2,fname(1:10)//'S4a',minfile,maxfile)
-      call combinehistoL(2,fname(1:10)//'S5a',minfile,maxfile)
-      call combinehistoL(3,fname(1:10)//'Y3b',minfile,maxfile)
-      call combinehistoL(3,fname(1:10)//'Y4b',minfile,maxfile)
-      call combinehistoL(3,fname(1:10)//'Y5b',minfile,maxfile)
-      call combinehistoL(3,fname(1:10)//'S3b',minfile,maxfile)
-      call combinehistoL(3,fname(1:10)//'S4b',minfile,maxfile)
-      call combinehistoL(3,fname(1:10)//'S5b',minfile,maxfile)
-      call combinehistoL(4,fname(1:10)//'Y3c',minfile,maxfile)
-      call combinehistoL(4,fname(1:10)//'Y4c',minfile,maxfile)
-      call combinehistoL(4,fname(1:10)//'Y5c',minfile,maxfile)
-      call combinehistoL(4,fname(1:10)//'S3c',minfile,maxfile)
-      call combinehistoL(4,fname(1:10)//'S4c',minfile,maxfile)
-      call combinehistoL(4,fname(1:10)//'S5c',minfile,maxfile)
+CAV      call combinehistoL(2,fname(1:10)//'Y3a',minfile,maxfile)
+CAV      call combinehistoL(2,fname(1:10)//'Y4a',minfile,maxfile)
+CAV      call combinehistoL(2,fname(1:10)//'Y5a',minfile,maxfile)
+CAV      call combinehistoL(2,fname(1:10)//'S3a',minfile,maxfile)
+CAV      call combinehistoL(2,fname(1:10)//'S4a',minfile,maxfile)
+CAV      call combinehistoL(2,fname(1:10)//'S5a',minfile,maxfile)
+CAV      call combinehistoL(3,fname(1:10)//'Y3b',minfile,maxfile)
+CAV      call combinehistoL(3,fname(1:10)//'Y4b',minfile,maxfile)
+CAV      call combinehistoL(3,fname(1:10)//'Y5b',minfile,maxfile)
+CAV      call combinehistoL(3,fname(1:10)//'S3b',minfile,maxfile)
+CAV      call combinehistoL(3,fname(1:10)//'S4b',minfile,maxfile)
+CAV      call combinehistoL(3,fname(1:10)//'S5b',minfile,maxfile)
+CAV      call combinehistoL(4,fname(1:10)//'Y3c',minfile,maxfile)
+CAV      call combinehistoL(4,fname(1:10)//'Y4c',minfile,maxfile)
+CAV      call combinehistoL(4,fname(1:10)//'Y5c',minfile,maxfile)
+CAV      call combinehistoL(4,fname(1:10)//'S3c',minfile,maxfile)
+CAV      call combinehistoL(4,fname(1:10)//'S4c',minfile,maxfile)
+CAV      call combinehistoL(4,fname(1:10)//'S5c',minfile,maxfile)
       endif
       if (iaver.eq.8) then
-      call combinehistoL(2,fname(1:10)//'TLa',minfile,maxfile)
-      call combinehistoL(2,fname(1:10)//'CLa',minfile,maxfile)
-      call combinehistoL(2,fname(1:10)//'BLa',minfile,maxfile)
-      call combinehistoL(2,fname(1:10)//'WLa',minfile,maxfile)
-      call combinehistoL(2,fname(1:10)//'MLa',minfile,maxfile)
+CAV      call combinehistoL(2,fname(1:10)//'TLa',minfile,maxfile)
+CAV      call combinehistoL(2,fname(1:10)//'CLa',minfile,maxfile)
+CAV      call combinehistoL(2,fname(1:10)//'BLa',minfile,maxfile)
+CAV      call combinehistoL(2,fname(1:10)//'WLa',minfile,maxfile)
+CAV      call combinehistoL(2,fname(1:10)//'MLa',minfile,maxfile)
 CAV*********************************************************************
       call combinehistoL(12,fname(1:10)//'ELa',minfile,maxfile)
 CAV*********************************************************************
-      call combinehistoL(3,fname(1:10)//'TLb',minfile,maxfile)
-      call combinehistoL(3,fname(1:10)//'CLb',minfile,maxfile)
-      call combinehistoL(3,fname(1:10)//'BLb',minfile,maxfile)
-      call combinehistoL(3,fname(1:10)//'WLb',minfile,maxfile)
-      call combinehistoL(3,fname(1:10)//'MLb',minfile,maxfile)
+CAV      call combinehistoL(3,fname(1:10)//'TLb',minfile,maxfile)
+CAV      call combinehistoL(3,fname(1:10)//'CLb',minfile,maxfile)
+CAV      call combinehistoL(3,fname(1:10)//'BLb',minfile,maxfile)
+CAV      call combinehistoL(3,fname(1:10)//'WLb',minfile,maxfile)
+CAV      call combinehistoL(3,fname(1:10)//'MLb',minfile,maxfile)
 CAV*********************************************************************
       call combinehistoL(13,fname(1:10)//'ELb',minfile,maxfile)
 CAV*********************************************************************
-      call combinehistoL(4,fname(1:10)//'TLc',minfile,maxfile)
-      call combinehistoL(4,fname(1:10)//'CLc',minfile,maxfile)
-      call combinehistoL(4,fname(1:10)//'BLc',minfile,maxfile)
-      call combinehistoL(4,fname(1:10)//'WLc',minfile,maxfile)
-      call combinehistoL(4,fname(1:10)//'MLc',minfile,maxfile)
+CAV      call combinehistoL(4,fname(1:10)//'TLc',minfile,maxfile)
+CAV      call combinehistoL(4,fname(1:10)//'CLc',minfile,maxfile)
+CAV      call combinehistoL(4,fname(1:10)//'BLc',minfile,maxfile)
+CAV      call combinehistoL(4,fname(1:10)//'WLc',minfile,maxfile)
+CAV      call combinehistoL(4,fname(1:10)//'MLc',minfile,maxfile)
 CAV*********************************************************************
       call combinehistoL(14,fname(1:10)//'ELc',minfile,maxfile)
 CAV*********************************************************************
@@ -319,6 +332,7 @@ CAV*********************************************************************
      .         ,di(minfile:maxfile,1:nbins)
      .         ,t(1:nbins)
       common/voidlist/iv(100),nv
+      common/RPAR/R
 
       do i=minfile,maxfile    
          iflag = 0
@@ -363,7 +377,13 @@ c            wi(i,j) = 1d0
      .          ,wsum(1:nbins),errymean(1:nbins)
       character*2 filetag
       common/voidlist/iv(100),nv
+      common/RPAR/R
       common/outfile/filetag
+      
+      if (R.gt.0.0) then
+      call writehisto2(nbins,yi,ei,wi,di,t,froot,minfile,maxfile)
+      return
+      end if
       
       sum = 0d0
       errsum = 0d0
@@ -406,3 +426,112 @@ c      write(6,*) sum/16d0,dsqrt(errsum)/16d0
  101  format(3x,f11.6,1pe12.4,1pe12.4)
       return
       end
+
+
+
+
+
+
+
+      subroutine writehisto2(nbins,yi,ei,wi,di,t,froot,minfile,maxfile)
+      implicit real*8(a-h,o-z)
+      character*20 froot,fname
+      integer exc,n
+      dimension exc(minfile:maxfile)
+      dimension yi(minfile:maxfile,1:nbins)
+     .         ,ei(minfile:maxfile,1:nbins)
+     .         ,wi(minfile:maxfile,1:nbins)
+     .         ,di(minfile:maxfile,1:nbins)
+      dimension t(1:nbins),ymean(1:nbins)
+     .          ,wsum(1:nbins),errymean(1:nbins)
+      character*2 filetag
+      common/voidlist/iv(100),nv
+      common/RPAR/R
+      common/outfile/filetag
+      
+      sum = 0d0
+      errsum = 0d0
+      open(11,file='E'//filetag//froot(1:13))
+
+
+      do j=1,nbins
+      do i=minfile,maxfile
+      exc(i)=0
+      enddo 
+      
+CAV   
+
+ 700     continue
+         n=0
+         ymean(j) = 0d0
+         wsum(j) = 0d0
+         errsum =0d0
+         do i=minfile,maxfile
+            iflag = exc(i)
+            if (iflag.eq.1) goto 702   
+            do k=1,nv
+               if (i.eq.iv(k)) iflag = 1
+            enddo
+            if (iflag.eq.1) goto 702   
+            ymean(j) = ymean(j)+wi(i,j)*yi(i,j)
+            wsum(j) = wsum(j)+wi(i,j)
+            n=n+1
+ 702         continue
+         enddo
+         if (wsum(j).ne.0d0) ymean(j) = ymean(j)/wsum(j)
+
+         errymean(j) = 0d0
+         do i=minfile,maxfile
+            iflag = exc(i)
+            if (iflag.eq.1) goto 802   
+            do k=1,nv
+               if (i.eq.iv(k)) iflag = 1
+            enddo
+            if (iflag.eq.1) goto 802   
+            di(i,j) = yi(i,j)-ymean(j)
+            errymean(j) = errymean(j)+wi(i,j)*di(i,j)**2
+ 802         continue
+         enddo
+         
+         do i=minfile,maxfile
+            iflag = exc(i)
+            if (iflag.eq.1) goto 803   
+            do k=1,nv
+               if (i.eq.iv(k)) iflag = 1
+            enddo
+            if (iflag.eq.1) goto 803   
+          erry=dsqrt(errymean(j)/wsum(j))
+         if (abs(di(i,j))*wi(i,j)*real(n)/wsum(j).gt.R*erry)then
+         exc(i)=1
+         goto 700
+         end if
+ 803         continue
+         enddo
+
+         if (wsum(j).ne.0d0) errymean(j) = errymean(j)/real(n)/wsum(j)
+         errsum = errsum + errymean(j)
+         
+         sum = sum+ymean(j)
+
+
+CAV
+         write(*,*) t(j),ymean(j),dsqrt(errymean(j)),n
+         write(11,1012) t(j),ymean(j),dsqrt(errymean(j))
+      enddo
+      close(11)
+c      write(6,*) sum/16d0,dsqrt(errsum)/16d0
+ 1012  format(3x,f11.6,1pe12.4,1pe12.4)
+      return
+      end
+
+
+
+
+
+
+
+
+
+
+
+

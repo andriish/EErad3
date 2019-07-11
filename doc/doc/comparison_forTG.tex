@@ -31,7 +31,7 @@
     grid=none,
     grid style={line width=.1pt, draw=gray!10},
     major grid style={line width=.3pt,draw=gray!80},
-    enlargelimits={abs=0.01},    
+    enlargelimits={abs=0.0001},    
     ticklabel style={font=\Large,fill=none},
     xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=0, /pgf/number format/fixed zerofill, font=\Large} ,
         xlabel style={at={(ticklabel* cs:1)},anchor=north west, xshift=-0.8cm, yshift=-0.0cm, font=\Huge}
@@ -54,6 +54,8 @@
 \addlegendentry{Analytic, LO ($\sigma_0$ norm)}
 \addplot[color=blue,mark=none, mark size=1.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={\thisrowno{1}}, col sep=space]{../predictions/analytic/NLO.dat};
 \addlegendentry{Analytic, NLO ($\sigma_0$ norm)}
+\addplot[color=red,mark=none, mark size=1.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={\thisrowno{1}*(1.2-0.0007*\thisrowno{0}+1.0/(\thisrowno{0}-179.4)}, col sep=space]{../predictions/analytic/NLO.dat};
+\addlegendentry{Analytic, NLO$\times K(\chi)$ ($\sigma_0$ norm)}
 
 
 %\addplot[color=green,mark=o,only marks, mark size=1.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={1.0253894*\thisrowno{1}}, col sep=space]{../processed/colorful/ALL.dat};
@@ -77,7 +79,7 @@
 \addplot[color=blue,mark=+,only marks, mark size=2.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={180/2.0*1.0*(\thisrowno{2}+\thisrowno{1}*2*0.118/(2.0*3.1415) )  }, col sep=space]{../processed/eerad3/ALL.dat};
 \addlegendentry{EERAD3, NLO ($\sigma_0$ norm)}
 
-\addplot[color=red,mark=+,only marks, mark size=2.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={180/2.0*1.0*(\thisrowno{3}    )}, col sep=space]{../processed/eerad3/ALL.dat};
+\addplot[color=red,mark=+,only marks, mark size=2.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={180/2.0*1.0*(\thisrowno{3}+2*0.118/(2.0*3.1415)*\thisrowno{2}+5.63692164*0.118/(2.0*3.1415)*0.118/(2.0*3.1415)*\thisrowno{1})}, col sep=space]{../processed/eerad3/ALL.dat};
 \addlegendentry{EERAD3, NNLO ($\sigma_{0}$ norm)}
  \addlegendimage{empty legend}
 \addlegendentry{$K(\chi)=1.2-0.0007\chi+\frac{1}{\chi-179.4} $ ad hoc}

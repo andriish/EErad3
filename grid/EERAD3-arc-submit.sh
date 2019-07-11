@@ -69,11 +69,12 @@ CARDS=(
         Etx.y1d6.iZ6.NNLOicol6.input  
         )
 
-CARDS=( Etx.y1d6.iZ4.NNLOicol4.input  
+CARDS=(         Etx.y1d6.iZ1.NNLOicol1.input  
+Etx.y1d6.iZ4.NNLOicol4.input  
         )
         
 #for i in `seq 1999 2999`;
-for i in `seq 3001 4000`;
+for i in `seq 5001 6000`;
 do
 
 for CARD in "${CARDS[@]}"

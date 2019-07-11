@@ -11,7 +11,7 @@ CARDS=( E00.y1d8.iL0.LO.input
         Etx.y1d6.iZ6.NNLOicol6.input  
         )
 mkdir temp
-Q=90
+Q=160
 for a in $(ls calc/E*.y1d6.iZ1.ELa); do  echo -n $(echo $a | cut -c7-10); sed "${Q}q;d" $a; done  > temp/iZ1.$Q.txt
 for a in $(ls calc/E*.y1d6.iZ2.ELa); do  echo -n $(echo $a | cut -c7-10); sed "${Q}q;d" $a; done  > temp/iZ2.$Q.txt
 for a in $(ls calc/E*.y1d6.iZ3.ELa); do  echo -n $(echo $a | cut -c7-10); sed "${Q}q;d" $a; done  > temp/iZ3.$Q.txt

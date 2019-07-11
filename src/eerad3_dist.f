@@ -158,16 +158,16 @@ CAV*********************************************************************
       endif
 
       if (iaver.eq.8) then
-         call combinedist('W',froot,idata,ibindata(1:idata)
-     .                       ,fextdata(1:idata))
-         call combinedist('C',froot,idata,ibindata(1:idata)
-     .                       ,fextdata(1:idata))
-         call combinedist('M',froot,idata,ibindata(1:idata)
-     .                       ,fextdata(1:idata))
-         call combinedist('T',froot,idata,ibindata(1:idata)
-     .                       ,fextdata(1:idata))
-         call combinedist('B',froot,idata,ibindata(1:idata)
-     .                       ,fextdata(1:idata))
+CAV         call combinedist('W',froot,idata,ibindata(1:idata)
+CAV     .                       ,fextdata(1:idata))
+CAV         call combinedist('C',froot,idata,ibindata(1:idata)
+CAV     .                       ,fextdata(1:idata))
+CAV         call combinedist('M',froot,idata,ibindata(1:idata)
+CAV     .                       ,fextdata(1:idata))
+CAV         call combinedist('T',froot,idata,ibindata(1:idata)
+CAV     .                       ,fextdata(1:idata))
+CAV         call combinedist('B',froot,idata,ibindata(1:idata)
+CAV     .                       ,fextdata(1:idata))
 CAV*********************************************************************
          call combinedist('E',froot,idata,ibindataEEC(1:idata)
      .                       ,fextdata(1:idata))
@@ -175,10 +175,10 @@ CAV*********************************************************************
       endif
 
       if (iaver.ge.6.and.iaver.le.8) then
-         call combinedist('Y',froot,idata2,ibindata2(1:idata2)
-     .                       ,fextdata2(1:idata2))
-         call combinedist('S',froot,idata2,ibindata2(1:idata2)
-     .                       ,fextdata2(1:idata2))
+CAV         call combinedist('Y',froot,idata2,ibindata2(1:idata2)
+CAV     .                       ,fextdata2(1:idata2))
+CAV         call combinedist('S',froot,idata2,ibindata2(1:idata2)
+CAV     .                       ,fextdata2(1:idata2))
       endif
 
       stop
@@ -311,10 +311,10 @@ CAV*********************************************************************
          close(36)
       enddo
 
- 101  format(3x,f11.6,1pe12.4,1pe12.4,1pe12.4,1pe12.4)
- 103  format(3x,f11.6,3f12.4)
- 104  format(3x,f11.6,1pe12.4,1pe12.4,1pe12.4,1pe12.4,1pe12.4,1pe12.4)
- 105  format(3x,f11.6,1pe12.4,1pe12.4)
+ 101  format(3x,f11.6,1pe14.6,1pe14.6,1pe14.6,1pe14.6)
+ 103  format(3x,f11.6,3f14.6)
+ 104  format(3x,f11.6,1pe14.6,1pe14.6,1pe14.6,1pe14.6,1pe14.6,1pe14.6)
+ 105  format(3x,f11.6,1pe14.6,1pe14.6)
       return
       end
 

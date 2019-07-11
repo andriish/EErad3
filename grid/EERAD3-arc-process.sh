@@ -2,7 +2,7 @@
 
 sh EERAD3-arc-get.sh
 for a in $(ls output/*tgz); do
-tar -xzf $a
+tar --skip-old-files -xzf  $a
 done
 mkdir -p logcombine
 cd calc

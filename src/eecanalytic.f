@@ -1,13 +1,28 @@
       PROGRAM EECANALYTIC
       IMPLICIT NONE
       real*16 GETLO,GETNLO,GETLOMOM,GETNLOMOM,al,pi
+      real*16 GETLOINT
       real*16 g11,g12,g21,g22,g23,g24
       real*16 g25,g26,g31,g32,g33,g34,g35
       real*16 A, B
       real*16 bnf,bnlc,blc
+      real*16 as1zcut,as2zcut,as3zcut
       integer i,N
       parameter(pi=3.14159265358979323846264338328q0)
+      real*16 z
       al=0.1180q0/(2.0q0*pi)      
+
+      open(10,file='doc/predictions/analytic/LOexpanded.dat')
+      do i=1,180
+      N=50000
+      z=(1.0q0-cos(1.0q0*i/180.0*Pi))/2.0q0
+      write(10,'(f8.4, E15.6, E15.6)')(1.0q0*i-0.5),
+     .al*GETLOINT(1.0q0*i,179.9q0,N),
+     .al*as1zcut(z)
+      enddo
+      close(10)
+C      return 
+
 
       open(11,file='doc/predictions/analytic/LO.dat')
       do i=1,180
@@ -61,6 +76,26 @@
 CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 C Simple integration of analytic functions in the given interval
 CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+      real*16 FUNCTION GETLOINT(th1,th2,N)
+      IMPLICIT NONE
+      real*16 z,th1, th2, pi,z1,z2,dz,sum,A
+      integer i,N
+      parameter(pi=3.14159265358979323846264338328q0)
+      z1=(1.0q0-cos(th1/180.0q0*pi))/2.0q0
+      z2=(1.0q0-cos(th2/180.0q0*pi))/2.0q0
+      dz=(Z2-z1)/(1.0q0*N+1.0q0)  
+      
+        sum=0.0q0
+        do i=1,N
+        z=z1+dz*i
+        sum=sum+A(z)*(1-z)
+        enddo
+        GETLOINT=SUM/(1.0q0*N)*(z2-z1)*180.0/2.0d0
+      end
+
+
+
+
       real*16 FUNCTION GETLO(th1,th2,N)
       IMPLICIT NONE
       real*16 z,th1, th2, pi,z1,z2,dz,sum,A
@@ -614,6 +649,53 @@ c---  recursion
 CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 C Functions above are taken from CHAPLIN
 CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+
+
+
+CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+C Functions below are taken from TG's mail
+CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+
+
+      real*16 function as3zcut(z)
+      real*16  z
+      as3zcut=-15.0496296296296296296296296296q0*log(z)**3
+     .+518.865695060272668517465934465q0*log(z)**2
+     .-2871.36018216039823956603951601q0*log(z)
+            return
+      end
+     
+      real*16 function as2zcut(z)
+      real*16  z
+      as2zcut=5.76666666666666666666666666667q0*log(z)**2
+     .-81.4809061031774183115800436622q0*log(z)
+     .+32.7562380661705430311159791007q0
+            return
+      end
+      
+       real*16 function as1zcut(z) 
+       real*16 nc, cf,ca,nf,tf,z
+       nc=3.0q0
+       cf=(nc**2-1.0q0)/(2.0q0*nc)
+       ca=nc
+       nf=5.0q0
+       tf=1.0q0/2.0q0
+       as1zcut = -2.0q0*log(z) + 1.27777777777q0
+     .-0.533333333333333333333q0 * z
+      
+       if (z.lt. 0.0000001.or.1.0q0-z.lt. 0.0000001)  then
+       as1zcut = 0
+       return
+       end if
+       as1zcut = cf * (
+     .-3/2*log(z)
+     .+1/2*(-1+z)*(3*z**3-13*z**2+23*z-9)*log(1.0q0-z)/z**4
+     .-1/4*(-1+z)*(9*z**2-37*z+18)/z**3 )
+      return       
+       end
+
+
+
 
 
 

@@ -18,11 +18,12 @@ FFILES4   = src/eecanalytic.f
 #for gfortran compiler
 FC        = gfortran
 #FFLAGS    = -g -fno-automatic -O -finit-integer=0  -Wall -fcheck=all -g -fbacktrace  -finit-real=zero -ffpe-trap=invalid,zero,overflow,underflow
-FFLAGS    = -g -fno-automatic -O -finit-integer=0    -finit-real=zero -ffpe-trap=invalid,zero,overflow,underflow 
+#FFLAGS    = -g -fno-automatic -O -finit-integer=0    -finit-real=zero -ffpe-trap=invalid,zero,overflow,underflow 
+FFLAGS    = -fno-automatic -O2 -finit-integer=0    -finit-real=zero 
 #for ifort compiler
 #FC        = ifort
 #FFLAGS    = -save -O4
-LDFLAGS = -L. -static
+LDFLAGS =  -static
 
 OBJFILES1 = $(addprefix $(OBJDIR)/,$(patsubst %.f,%.o,$(FFILES1)))
 OBJFILES2 = $(addprefix $(OBJDIR)/,$(patsubst %.f,%.o,$(FFILES2)))
