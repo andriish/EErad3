@@ -73,13 +73,13 @@
 
 %\addplot[color=red,mark=+,only marks, mark size=1.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={0.84*2*3.1415/180.0*1.0*\thisrowno{1}/(sin(\thisrowno{0}+0.5)-sin(\thisrowno{0}-0.5))},  y error index=2, col sep=space]{../processed/eerad3/LO.dat};
 %\addlegendentry{EERAD3, LO}
-\addplot[color=black,mark=+,only marks, mark size=2.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={180/2.0*1.0*\thisrowno{1}}, col sep=space]{../processed/eerad3/ALL.dat};
+\addplot[color=black,mark=+,only marks, mark size=1.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={180/2.0*1.0*\thisrowno{1}}, col sep=space]{../processed/eerad3/ALL.dat};
 \addlegendentry{EERAD3, LO ($\sigma_0$ norm)}
 
-\addplot[color=blue,mark=+,only marks, mark size=2.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={180/2.0*1.0*(\thisrowno{2}+\thisrowno{1}*2*0.118/(2.0*3.1415) )  }, col sep=space]{../processed/eerad3/ALL.dat};
+\addplot[color=blue,mark=+,only marks, mark size=1.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={180/2.0*1.0*(\thisrowno{2}+\thisrowno{1}*2*0.118/(2.0*3.1415) )  }, col sep=space]{../processed/eerad3/ALL.dat};
 \addlegendentry{EERAD3, NLO ($\sigma_0$ norm)}
 
-\addplot[color=red,mark=+,only marks, mark size=2.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={180/2.0*1.0*(\thisrowno{3}+2*0.118/(2.0*3.1415)*\thisrowno{2}+5.63692164*0.118/(2.0*3.1415)*0.118/(2.0*3.1415)*\thisrowno{1})}, col sep=space]{../processed/eerad3/ALL.dat};
+\addplot[color=red,mark=+,only marks, mark size=1.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={180/2.0*1.0*(\thisrowno{3}+2*0.118/(2.0*3.1415)*\thisrowno{2}+5.63692164*0.118/(2.0*3.1415)*0.118/(2.0*3.1415)*\thisrowno{1})}, col sep=space]{../processed/eerad3/ALL.dat};
 \addlegendentry{EERAD3, NNLO ($\sigma_{0}$ norm)}
  \addlegendimage{empty legend}
 \addlegendentry{$K(\chi)=1.2-0.0007\chi+\frac{1}{\chi-179.4} $ ad hoc}
