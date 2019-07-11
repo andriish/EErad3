@@ -27,7 +27,7 @@
 \begin{axis}[ylabel=$1/\sigma_{t}{\rm d}\Sigma/{\rm d}\chi$,
     ymode=log, 
     xmin=-2,xmax=182,
-    ymin=0.00045,ymax=450.0,
+    ymin=0.009,ymax=450.0,
     grid=none,
     grid style={line width=.1pt, draw=gray!10},
     major grid style={line width=.3pt,draw=gray!80},
@@ -51,19 +51,19 @@
         yshift=0.32\textheight
     ]
 \addplot[color=black,mark=none, mark size=1.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={\thisrowno{1}}, col sep=space]{../predictions/analytic/LO.dat};
-\addlegendentry{Analytic, LO}
+\addlegendentry{Analytic, LO ($\sigma_0$ norm)}
 \addplot[color=blue,mark=none, mark size=1.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={\thisrowno{1}}, col sep=space]{../predictions/analytic/NLO.dat};
-\addlegendentry{Analytic, NLO}
+\addlegendentry{Analytic, NLO ($\sigma_0$ norm)}
 
 
-%\addplot[color=black,mark=o,only marks, mark size=1.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={1.025*\thisrowno{1}}, col sep=space]{../processed/colorful/ALL.dat};
-%\addlegendentry{ColorFUL$\times1.025$, LO}
-%\addplot[color=blue,mark=o,only marks, mark size=1.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={1.025*\thisrowno{2}}, col sep=space]{../processed/colorful/ALL.dat};
-%\addlegendentry{ColorFUL$\times1.025$, NLO}
+%\addplot[color=green,mark=o,only marks, mark size=1.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={1.0253894*\thisrowno{1}}, col sep=space]{../processed/colorful/ALL.dat};
+%\addlegendentry{ColorFUL, LO ($\sigma_0$ norm)}
+%\addplot[color=green,mark=o,only marks, mark size=1.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={1.0253894*\thisrowno{2}}, col sep=space]{../processed/colorful/ALL.dat};
+%\addlegendentry{ColorFUL, NLO ($\sigma_0$ norm)}
 %\addplot[color=green,mark=*,only marks, mark size=1.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y index=3,  y error index=4, col sep=space]{../processed/colorful/NLOcont.dat};
 %\addlegendentry{ColorFUL, NLOcont}
-%\addplot[color=red,mark=o,only marks, mark size=1.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={1.025*\thisrowno{3}},  col sep=space]{../processed/colorful/ALL.dat};
-%\addlegendentry{ColorFUL$\times1.025$, NNLO}
+%\addplot[color=green,mark=o,only marks, mark size=1.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={1.0253894*\thisrowno{3}},  col sep=space]{../processed/colorful/ALL.dat};
+%\addlegendentry{ColorFUL, NNLO ($\sigma_0$ norm)}
 %\addplot[color=red,mark=*,only marks, mark size=1.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y index=3,  y error index=4, col sep=space]{../processed/colorful/NNLOcont.dat};
 %\addlegendentry{ColorFUL, NNLOcont}
 
@@ -72,21 +72,22 @@
 %\addplot[color=red,mark=+,only marks, mark size=1.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={0.84*2*3.1415/180.0*1.0*\thisrowno{1}/(sin(\thisrowno{0}+0.5)-sin(\thisrowno{0}-0.5))},  y error index=2, col sep=space]{../processed/eerad3/LO.dat};
 %\addlegendentry{EERAD3, LO}
 \addplot[color=black,mark=+,only marks, mark size=2.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={180/2.0*1.0*\thisrowno{1}}, col sep=space]{../processed/eerad3/ALL.dat};
-\addlegendentry{EERAD3, LO}
+\addlegendentry{EERAD3, LO ($\sigma_0$ norm)}
 
-\addplot[color=blue,mark=+,only marks, mark size=2.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={180/2.0*1.0*(\thisrowno{2}+\thisrowno{1}*2*0.118/(2*3.1415))}, col sep=space]{../processed/eerad3/ALL.dat};
-\addlegendentry{EERAD3, NLO}
+\addplot[color=blue,mark=+,only marks, mark size=2.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={180/2.0*1.0*(\thisrowno{2}+\thisrowno{1}*2*0.118/(2.0*3.1415) )  }, col sep=space]{../processed/eerad3/ALL.dat};
+\addlegendentry{EERAD3, NLO ($\sigma_0$ norm)}
 
-\addplot[color=red,mark=+,only marks, mark size=2.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={180/2.0*1.0*(\thisrowno{3})}, col sep=space]{../processed/eerad3/ALL.dat};
-\addlegendentry{EERAD3, NNLO}
-
-
+\addplot[color=red,mark=+,only marks, mark size=2.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={180/2.0*1.0*(\thisrowno{3}    )}, col sep=space]{../processed/eerad3/ALL.dat};
+\addlegendentry{EERAD3, NNLO ($\sigma_{0}$ norm)}
+ \addlegendimage{empty legend}
+\addlegendentry{$K(\chi)=1.2-0.0007\chi+\frac{1}{\chi-179.4} $ ad hoc}
+ 
 %\addplot[color=red,mark=+,only marks, mark size=1.0pt,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index=0, y expr={0.83*2.0*1.0*\thisrowno{1}},  y error index=2, col sep=space]{../processed/eerad3/LOl.dat};
 %\addlegendentry{EERAD3, LOl}
 \end{axis}
-\begin{axis}[ylabel={$\frac{Numeric}{Analytic}$, LO},restrict y to domain=0.9:1.1,
+\begin{axis}[ylabel={$\frac{Numeric\ LO}{Analytic\ LO}$},restrict y to domain=0.9:1.1,
     xmin=-2,xmax=182,
-    ymin=0.999,ymax=1.001,
+    ymin=0.9995,ymax=1.0005,
     grid=none,
     grid style={line width=.1pt, draw=gray!10},
     major grid style={line width=.3pt,draw=gray!80},
@@ -108,11 +109,11 @@
        \node[draw=none,anchor=west] (source) at (axis cs:0.0,1.0){};
        \node[draw=none](destination) at (axis cs:180,1.0){};
        \draw[thick,-](source)--(destination);
-%         \addplot[mark=o, mark size=1.0pt, color=black,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index =0, y expr=(1.025*\thisrowno{1} / \thisrowno{11} ), col sep=space ]{../processed/BOTH.dat};
-         \addplot[mark=+, mark size=1.0pt, color=black,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index =0, y expr=(180.0/2.0*\thisrowno{6} / \thisrowno{11} ), col sep=space ]{../processed/BOTH.dat};
+%         \addplot[mark=o, mark size=1.0pt, color=green,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index =0, y expr=(1.0253894*\thisrowno{1} / \thisrowno{11} ), col sep=%space ]{../processed/BOTH.dat};
+         \addplot[mark=+, mark size=1.0pt, color=black,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index =0, y expr=(180.0/2.0*(\thisrowno{6}) / \thisrowno{11} ), col sep=space ]{../processed/BOTH.dat};
         %\addplot[mark=none, color=blue,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index =0, y expr={\thisrowno{1}/\thisrowno{6}}, y error expr={\thisrowno{7}/\thisrowno{6}}, col sep=space ]{../../share/#2/fits/fit_0504011001.dat};
 \end{axis}
-\begin{axis}[ylabel={$\frac{Numeric}{Analytic}$, NLO},restrict y to domain=0.9:1.1,
+\begin{axis}[ylabel={$\frac{Numeric\ NLO}{Analytic\ NLO}$},restrict y to domain=-5:5,
     xmin=-2,xmax=182,
     ymin=0.99,ymax=1.01,
     grid=none,
@@ -136,40 +137,43 @@
        \node[draw=none,anchor=west] (source) at (axis cs:0.0,1.0){};
        \node[draw=none](destination) at (axis cs:180,1.0){};
        \draw[thick,-](source)--(destination);
-%        \addplot[mark=o, mark size=1.0pt, color=blue,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index =0, y expr=(1.025*\thisrowno{2} / \thisrowno{13} ), col sep=space ]{../processed/BOTH.dat};
-        \addplot[mark=+, mark size=1.0pt, color=blue,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index =0, y expr=(180.0/2.0*(\thisrowno{7}+\thisrowno{6}*2*0.118/(2.0*3.1415))/ \thisrowno{13} ), col sep=space ]{../processed/BOTH.dat};
+%        \addplot[mark=o, mark size=1.0pt, color=green,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index =0, y expr=(1.0253894*\thisrowno{2} / \thisrowno{13} ), col sep=s%pace ]{../processed/BOTH.dat};
+        \addplot[mark=+, mark size=1.0pt, color=blue,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index =0, y expr=(180.0/2.0*(\thisrowno{7}+\thisrowno{6}*2*0.118/(2.0*3.1415)) / \thisrowno{13} ), col sep=space ]{../processed/BOTH.dat};
         %\addplot[mark=none, color=blue,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index =0, y expr={\thisrowno{1}/\thisrowno{6}}, y error expr={\thisrowno{7}/\thisrowno{6}}, col sep=space ]{../../share/#2/fits/fit_0504011001.dat};
 \end{axis}
-%\begin{axis}[ylabel={$\frac{ColorFUL}{EERAD3}$, NNLO},xlabel=$\chi\degree$,restrict y to domain=-10:10,
-%    xmin=-2,xmax=182,
-%    ymin=0.25,ymax=1.75,
-%    grid=none,
-%    grid style={line width=.1pt, draw=gray!10},
-%    major grid style={line width=.3pt,draw=gray!80},
-%    minor tick num=5,
-%    enlargelimits={abs=0.01},    
-%    ticklabel style={font=\small,fill=none},
-%    xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=0, /pgf/number format/fixed zerofill} ,
-%    yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3, /pgf/number format/fixed zerofill} ,
-%        xlabel style={at={(ticklabel* cs:1)},anchor=north west, xshift=-0.5cm, yshift=-0.3cm, font=\large},
-%    ylabel style={at={(ticklabel* cs:1)},anchor=south east, xshift=0.0cm, yshift=0.5cm, font=\small},
-%    legend style={draw=none},
-%        extra tick style={grid=major},
-%        legend style={legend pos=north east,font={\bf\tiny}},
-%            width=1.0\textwidth,
-%        height=0.16\textheight,
-%        yshift=0.0\textheight
-%    ]        
-%       \node[draw=none,anchor=west] (source) at (axis cs:0.0,1.0){};
-%       \node[draw=none](destination) at (axis cs:180,1.0){};
-%       \draw[thick,-](source)--(destination);
-%        \addplot[mark=o, mark size=0.25pt, color=red,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index =0, y expr=(1.025*2.0/180.0*\thisrowno{3} / \thisrowno{8} ), col sep=space ]{../processed/BOTH.dat};
-        %\addplot[mark=none, color=blue,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index =0, y expr={\thisrowno{1}/\thisrowno{6}}, y error expr={\thisrowno{7}/\thisrowno{6}}, col sep=space ]{../../share/#2/fits/fit_0504011001.dat};
-%\end{axis}
+\begin{axis}[ylabel={$\frac{Numeric\ NNLO}{(Analytic\ NLO)\times K(\chi)}$},xlabel=$\chi\degree$,restrict y to domain=-10:10,
+    xmin=-2,xmax=182,
+    ymin=0.9,ymax=1.1,
+    grid=none,
+    grid style={line width=.1pt, draw=gray!10},
+    major grid style={line width=.3pt,draw=gray!80},
+    minor tick num=5,
+    enlargelimits={abs=0.0001},    
+    ticklabel style={font=\small,fill=none},
+    xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=0, /pgf/number format/fixed zerofill} ,
+    yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3, /pgf/number format/fixed zerofill} ,
+        xlabel style={at={(ticklabel* cs:1)},anchor=north west, xshift=-0.5cm, yshift=-0.3cm, font=\large},
+    ylabel style={at={(ticklabel* cs:1)},anchor=south east, xshift=0.0cm, yshift=0.5cm, font=\small},
+    legend style={draw=none},
+        extra tick style={grid=major},
+        legend style={legend pos=north east,font={\bf\tiny}},
+            width=1.0\textwidth,
+        height=0.16\textheight,
+        yshift=0.0\textheight
+    ]        
+       \node[draw=none,anchor=west] (source) at (axis cs:0.0,1.0){};
+       \node[draw=none](destination) at (axis cs:180,1.0){};
+       \draw[thick,-](source)--(destination);
+%         \addplot[mark=o, mark size=1.0pt, color=green,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index =0, y expr=(1.0253894*\thisrowno{3} / (\thisrowno{13}*(1.2-0.000%7*\thisrowno{0}+1.0/(\thisrowno{0}-179.4) )) ), col sep=space ]{../processed/BOTH.dat};
+         \addplot[mark=+, mark size=1.0pt, color=red,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index =0, y expr=(180.0/2.0*( \thisrowno{8}+2*0.118/(2.0*3.1415)*\thisrowno{7}+5.63692164*0.118/(2.0*3.1415)*0.118/(2.0*3.1415)*\thisrowno{6})/ (\thisrowno{13}*(1.2-0.0007*\thisrowno{0}+1.0/(\thisrowno{0}-179.4) ) ), col sep=space ]{../processed/BOTH.dat};
+
+         %\addplot[mark=none, color=blue,error bars/.cd,y dir=both,y explicit, error mark=none] table [x index =0, y expr={\thisrowno{1}/\thisrowno{6}}, y error expr={\thisrowno{7}/\thisrowno{6}}, col sep=space ]{../../share/#2/fits/fit_0504011001.dat};
+\end{axis}
 \end{tikzpicture}
 }
 \caption{Theory predictions}
 \label{fig:result}
 \end{figure}
+%$LO$, $NLO$ and $NNLO$ stand for the full predictions in corresponding accuracy normalized to $\sigma_0$.
 	
 \end{document}
