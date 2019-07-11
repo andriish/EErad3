@@ -3,6 +3,8 @@ y1d6    ! frooty
 iZ1     ! frooti
 tx      ! filetag
 1 5999    ! minfile maxfile  for some reason 1,4,5 fail
-2       ! nvoid
+4       ! nvoid
 2835
 203
+3018
+3410
