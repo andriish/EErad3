@@ -12,12 +12,12 @@ b=$(basename $a)
 ../../eerad3_combine -i $a  -R 7.0 &> ../logcombine/$b'.log' &
 done
 
-for a in $(ls -1 ../cards/E*combine | grep  '.NL0' ); do
+for a in $(ls -1 ../cards/E*combine | grep  '\.NLO' ); do
 b=$(basename $a)
 ../../eerad3_combine -i $a  -R 10.0 &> ../logcombine/$b'.log' &
 done
 
-for a in $(ls -1 ../cards/E*combine | grep  '.NNL0' ); do
+for a in $(ls -1 ../cards/E*combine | grep  '\.NNLO' ); do
 b=$(basename $a)
 ../../eerad3_combine -i $a  -R 10.0 &> ../logcombine/$b'.log' &
 done
